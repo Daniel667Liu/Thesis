@@ -7,6 +7,9 @@ public class AssignInputManager : MonoBehaviour
     public LayerMask inputBoxLayer;
     public LayerMask keyLayer;
 
+    // current hoverbox
+    private GameObject hoverObject;
+
     // current box variables
     private GameObject currentBox;
     private Vector3 currentOffset;
@@ -23,9 +26,18 @@ public class AssignInputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GameObject hoverObject = raycast();
+        GameObject oldHover = hoverObject;
+        hoverObject = raycast();
+        
+        // highlight the object in the box
+        if (oldHover != hoverObject)
+        {
+            if (hoverObject != null) hoverObject.GetComponent<Interaction>().HighlightObject();
+            if (oldHover != null) oldHover.GetComponent<Interaction>().StopHighlightObject();
+        }
 
 
+        // UI drag and drop
         if (hoverObject != null)
         {
             if (Input.GetMouseButtonDown(0))
@@ -99,7 +111,6 @@ public class AssignInputManager : MonoBehaviour
             // snap
             currentBox.transform.position -= offset;
 
-            // TODO: assign key
             List<KeyCode> keyCodes = new List<KeyCode>();
             foreach (string key in keys)
             {
@@ -107,9 +118,10 @@ public class AssignInputManager : MonoBehaviour
                 else if (key.Equals("down")) keyCodes.Add(KeyCode.DownArrow);
                 else if (key.Equals("left")) keyCodes.Add(KeyCode.LeftArrow);
                 else if (key.Equals("right")) keyCodes.Add(KeyCode.RightArrow);
-                else
-                    keyCodes.Add((KeyCode)(int)key[0]);
+                else keyCodes.Add((KeyCode)(int)key[0]);
             }
+            // TODO: assign key function
+            currentBox.GetComponent<Interaction>().AssignKeys(keyCodes);
 
             return true;
         }
@@ -125,7 +137,6 @@ public class AssignInputManager : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, inputBoxLayer))
         {
-            Debug.Log(hit.collider.gameObject.name);
             return hit.collider.gameObject;
         }
         else
