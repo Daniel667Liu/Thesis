@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class gamePrepareState : gameBaseState
+public class gameBookState : gameBaseState
 {
     public override void EnterState(GameStateManager stateManager)
     {
-        stateManager.cameraManager.TransitToPrepare();
+        stateManager.cameraManager.TransitToBook();
         //stateManager.DisableInteraction();
         stateManager.EnableInteraction();
     }

@@ -15,6 +15,7 @@ public class GameStateManager : MonoBehaviour
     gameIngameState gameIngameState = new gameIngameState();
     gameInventoryState gameInventoryState = new gameInventoryState();
     gamePrepareState gamePrepareState = new gamePrepareState();
+    gameBookState gameBookState = new gameBookState();
 
     //declare the refrences of the objects in the scene
     [HideInInspector]
@@ -45,10 +46,11 @@ public class GameStateManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         
         currentState.UpdateState(this);
+        Test();
     }
 
     public void TransitState( gameBaseState next) //used for transit into next game state
@@ -64,17 +66,37 @@ public class GameStateManager : MonoBehaviour
         TransitState(lastState);
     }
 
-  
+    public void ToInGameState() 
+    {
+        if (currentState != gameIngameState) 
+        {
+            TransitState(gameIngameState);
+        }
+    }
     //call when click box and paper at start scene
     public void ToPrepareState() 
     {
-        TransitState(gamePrepareState);
+        if (currentState != gamePrepareState)
+        {
+            TransitState(gamePrepareState);
+        }
     }
 
     //call when click inventory at the start scene
     public void ToInventoryState() 
     {
-        TransitState(gameInventoryState);
+        if (currentState != gameInventoryState) 
+        {
+            TransitState(gameInventoryState);
+        }
+    }
+
+    public void ToBookState() 
+    {
+        if (currentState != gameBookState) 
+        {
+            TransitState(gameBookState);
+        }
     }
 
 
@@ -97,5 +119,21 @@ public class GameStateManager : MonoBehaviour
     {
 
     }
-    
+
+
+    void Test()
+    {
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            ToInGameState();
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            ToPrepareState();
+        }
+        if (Input.GetKeyDown(KeyCode.K)) 
+        {
+            ToBookState();
+        }
+    }
 }
