@@ -99,6 +99,14 @@ public class GameStateManager : MonoBehaviour
         }
     }
 
+    public void ToStartState() 
+    {
+        if (currentState != gameStartState) 
+        {
+            TransitState(gameStartState);
+        }
+    }
+
 
     public void GameRestart() 
     {

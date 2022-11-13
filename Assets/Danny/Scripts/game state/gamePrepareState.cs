@@ -9,6 +9,7 @@ public class gamePrepareState : gameBaseState
         stateManager.cameraManager.TransitToPrepare();
         //stateManager.DisableInteraction();
         stateManager.EnableInteraction();
+       
     }
 
     public override void UpdateState(GameStateManager stateManager)
