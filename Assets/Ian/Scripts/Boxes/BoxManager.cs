@@ -8,7 +8,12 @@ public class BoxManager : MonoBehaviour
     public Vector3 StagePosition;
     public Vector3[] ShelfPositions;
 
-    private Box currentBox;
+    public Box currentBox;
+
+    private void Awake()
+    {
+        Services.boxManager = this;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +36,7 @@ public class BoxManager : MonoBehaviour
 
     public void ShowMusicBox(int boxID)
     {
+        // try to find the box with boxID
         Box box = null;
         foreach (Box b in AllBoxes)
         {
@@ -40,7 +46,6 @@ public class BoxManager : MonoBehaviour
                 break;
             }
         }
-
         if (box == null)
         {
             Debug.LogWarning("no music box with id: " + boxID + " is found");
@@ -55,6 +60,7 @@ public class BoxManager : MonoBehaviour
             int index = currentBox.id - 1;
             currentBox.gameObject.transform.position = ShelfPositions[index];
         }
+
         // then show box
         box.gameObject.transform.position = StagePosition;
         box.ShowUI();

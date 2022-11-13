@@ -26,10 +26,10 @@ public class AssignInputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.parent.gameObject.GetComponent<Manual>().shown == false) return;
+        //if (transform.parent.gameObject.GetComponent<Manual>().shown == false) return;
 
         GameObject oldHover = hoverObject;
-        hoverObject = raycast();
+        hoverObject = raycast(inputBoxLayer);
         
         // highlight the object in the box
         if (oldHover != hoverObject)
@@ -38,24 +38,26 @@ public class AssignInputManager : MonoBehaviour
             if (oldHover != null) oldHover.GetComponent<Interaction>().StopHighlightObject();
         }
 
-
-        // UI drag and drop
-        if (hoverObject != null)
+        if (transform.parent.gameObject.GetComponent<Manual>().shown == true)
         {
-            if (Input.GetMouseButtonDown(0))
+            // UI drag and drop
+            if (hoverObject != null)
             {
-                setCurrentBox(hoverObject);
+                if (Input.GetMouseButtonDown(0))
+                {
+                    setCurrentBox(hoverObject);
+                }
             }
-        }
-        if (currentBox != null)
-        {
-            if (Input.GetMouseButton(0))
+            if (currentBox != null)
             {
-                moveCurrentBox();
-            }
-            if (Input.GetMouseButtonUp(0))
-            {
-                releaseCurrentBox();
+                if (Input.GetMouseButton(0))
+                {
+                    moveCurrentBox();
+                }
+                if (Input.GetMouseButtonUp(0))
+                {
+                    releaseCurrentBox();
+                }
             }
         }
     }
@@ -133,11 +135,11 @@ public class AssignInputManager : MonoBehaviour
         }
     }
 
-    private GameObject raycast()
+    private GameObject raycast(LayerMask layer)
     {
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, inputBoxLayer))
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, layer))
         {
             return hit.collider.gameObject;
         }
