@@ -26,6 +26,8 @@ public class AssignInputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (transform.parent.gameObject.GetComponent<Manual>().shown == false) return;
+
         GameObject oldHover = hoverObject;
         hoverObject = raycast();
         

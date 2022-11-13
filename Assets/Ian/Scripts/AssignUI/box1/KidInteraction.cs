@@ -16,7 +16,7 @@ public class KidInteraction : Interaction
     // Update is called once per frame
     void Update()
     {
-        //TODO: if box is not active, return
+        //TODO?: if box is not active, return
 
         checkInput();
     }
