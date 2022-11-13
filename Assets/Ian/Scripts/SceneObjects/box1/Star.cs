@@ -18,6 +18,7 @@ public class Star : MonoBehaviour
 
     public void ShootStar()
     {
+        //TODO
         Debug.Log("shoot star");
     }
 

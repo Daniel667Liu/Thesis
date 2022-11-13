@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Firefly : MonoBehaviour
+public class Tree : MonoBehaviour
 {
     public float speed;
-
     private Animator anim;
 
     // Start is called before the first frame update
@@ -17,17 +16,19 @@ public class Firefly : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        speed -= Time.deltaTime * 1.5f;
+        speed -= Time.deltaTime * 2f;
         if (speed <= 0f) speed = 0f;
 
         if (anim == null) anim = GetComponent<Animator>();
         if (anim != null) anim.speed = (speed > 1f) ? 1f : speed;
     }
 
-    public void Fly()
+    public void Shake()
     {
-        speed += 0.5f;
-        if (speed >= 1.5f) speed = 1.5f;
+        //TODO
+        Debug.Log("SHAKE");
+        speed += 0.35f;
+        if (speed >= 1f) speed = 1f;
     }
 
     public void Highlight()
