@@ -32,7 +32,7 @@ public class AssignInputManager : MonoBehaviour
         hoverObject = raycast(inputBoxLayer);
         
         // highlight the object in the box
-        if (oldHover != hoverObject)
+        if (oldHover != hoverObject && currentBox == null)
         {
             if (hoverObject != null) hoverObject.GetComponent<Interaction>().HighlightObject();
             if (oldHover != null) oldHover.GetComponent<Interaction>().StopHighlightObject();
@@ -46,6 +46,7 @@ public class AssignInputManager : MonoBehaviour
                 if (Input.GetMouseButtonDown(0))
                 {
                     setCurrentBox(hoverObject);
+                    hoverObject.GetComponent<Interaction>().HighlightObject();
                 }
             }
             if (currentBox != null)
