@@ -11,7 +11,9 @@ public class gameInventoryState : gameBaseState
     {
         stateManager.cameraManager.TransitToInventory();
         stateManager.DisableInteraction();
-        
+        stateManager.backUI.SetActive(true);
+        //stateManager.hamburgerUI.SetActive(false);
+        stateManager.inventoryButton.interactable = false;
     }
     public override void UpdateState(GameStateManager stateManager)
     {
@@ -20,7 +22,7 @@ public class gameInventoryState : gameBaseState
 
     public override void ExitState(GameStateManager stateManager)
     {
-        
-        
+        stateManager.backUI.SetActive(false);
+        stateManager.inventoryButton.interactable = true;
     }
 }
