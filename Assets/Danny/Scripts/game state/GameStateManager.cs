@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 public class GameStateManager : MonoBehaviour
 {
 
@@ -21,6 +21,8 @@ public class GameStateManager : MonoBehaviour
     public CameraManager cameraManager;
     public GameObject gameStartUI;
     public GameObject hamburgerUI;
+    public GameObject backUI;
+    public Button inventoryButton;
 
     //initialize the game, get all refrences
     void GameIni()
@@ -28,6 +30,7 @@ public class GameStateManager : MonoBehaviour
         cameraManager = FindObjectOfType<CameraManager>();
         gameStartUI.SetActive(false);
         hamburgerUI.SetActive(false);
+        backUI.SetActive(false);
     }
 
 
