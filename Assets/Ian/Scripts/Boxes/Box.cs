@@ -21,12 +21,15 @@ public class Box : MonoBehaviour
         GameObject hitManual = raycast(manualLayer);
         if (hitManual != null)
         {
-            if (manual.GetComponent<Manual>().shown == false)
+            if (hitManual == manual)
             {
-                // manual up
-                if (Input.GetMouseButtonDown(0))
+                if (manual.GetComponent<Manual>().shown == false)
                 {
-                    manual.GetComponent<Manual>().ManualUp();
+                    // manual up
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        manual.GetComponent<Manual>().ManualUp();
+                    }
                 }
             }
         }

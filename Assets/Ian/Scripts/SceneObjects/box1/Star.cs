@@ -2,19 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Kid : SceneObject
+public class Star : SceneObject
 {
-    public SceneObjectState state = SceneObjectState.DDD;
-
     public Material highlightMat;
     private Material defaultMat;
-
-    private Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
-        anim = GetComponent<Animator>();
         defaultMat = GetComponent<MeshRenderer>().material;
     }
 
@@ -24,20 +19,10 @@ public class Kid : SceneObject
         
     }
 
-    public void RaiseHand()
+    public void ShootStar()
     {
-        Debug.Log("raised hand");
-
-        if (anim != null) anim.SetTrigger("PLACEHOLDER");
-
-        state = SceneObjectState.DD;
-    }
-
-    public void DropHand()
-    {
-        Debug.Log("dropped hand");
-
-        if (anim != null) anim.SetTrigger("PLACEHOLDER");
+        //TODO
+        Debug.Log("shoot star");
     }
 
     public override void Highlight()
@@ -56,10 +41,10 @@ public class Kid : SceneObject
 
     public override void FinishedLoop()
     {
-        // REMARK: this should be called at the end of raise hand, and there should be a certain amount of empty frame, which will be the delay before which it turns into 3D
+        //TODO
+        // set cd
 
         // back to 3d model
-        state = SceneObjectState.DDD;
-        //TODO
+
     }
 }

@@ -32,7 +32,7 @@ public class AssignInputManager : MonoBehaviour
         hoverObject = raycast(inputBoxLayer);
         
         // highlight the object in the box
-        if (oldHover != hoverObject)
+        if (oldHover != hoverObject && currentBox == null)
         {
             if (hoverObject != null) hoverObject.GetComponent<Interaction>().HighlightObject();
             if (oldHover != null) oldHover.GetComponent<Interaction>().StopHighlightObject();
@@ -46,6 +46,7 @@ public class AssignInputManager : MonoBehaviour
                 if (Input.GetMouseButtonDown(0))
                 {
                     setCurrentBox(hoverObject);
+                    hoverObject.GetComponent<Interaction>().HighlightObject();
                 }
             }
             if (currentBox != null)
@@ -96,9 +97,9 @@ public class AssignInputManager : MonoBehaviour
         List<string> keys = new List<string>();
         Vector3 offset = Vector3.zero;
 
-        for (int i=0; i<currentBox.transform.childCount; i++)
+        for (int i=0; i<currentBox.transform.GetChild(0).childCount; i++)
         {
-            Transform rayChild = currentBox.transform.GetChild(i);
+            Transform rayChild = currentBox.transform.GetChild(0).GetChild(i);
             RaycastHit hit;
             if (Physics.Raycast(rayChild.position - rayChild.forward * 2f, rayChild.forward, out hit, Mathf.Infinity, keyLayer))
             {
@@ -110,7 +111,7 @@ public class AssignInputManager : MonoBehaviour
         }
 
         // success
-        if (keys.Count == currentBox.transform.childCount)
+        if (keys.Count == currentBox.transform.GetChild(0).childCount)
         {
             // snap
             currentBox.transform.position -= offset;
