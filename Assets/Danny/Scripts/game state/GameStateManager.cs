@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class GameStateManager : MonoBehaviour
 {
 
-
+    
 
     //get the reference of every game states
     gameBaseState lastState;
