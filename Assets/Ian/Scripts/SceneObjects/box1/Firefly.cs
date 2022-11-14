@@ -2,13 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Firefly : MonoBehaviour
+public class Firefly : SceneObject
 {
+    public SceneObjectState state = SceneObjectState.DDD;
+
     public float speed;
     public Material highlightMat;
     private Material defaultMat;
 
     private Animator anim;
+
+    private float cd = 1f;
+    private float cdTimer = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +29,25 @@ public class Firefly : MonoBehaviour
         if (speed <= 0f) speed = 0f;
 
         if (anim == null) anim = GetComponent<Animator>();
-        if (anim != null) anim.speed = (speed > 1f) ? 1f : speed;
+        if (anim != null)
+        {
+            if (cdTimer <= 0f)
+            {
+                anim.speed = (speed > 1f) ? 1f : speed;
+
+                if (anim.speed > 0f && state == SceneObjectState.DDD) state = SceneObjectState.DD;
+            }
+            else
+            {
+                cdTimer -= Time.deltaTime;
+                if (cdTimer <= 0f)
+                {
+                    //TODO: play the animation from the beginning
+                    //anim.Play("xxx", 0, 0f);
+                    cdTimer = 0f;
+                }
+            }
+        }
     }
 
     public void Fly()
@@ -33,17 +56,28 @@ public class Firefly : MonoBehaviour
         if (speed >= 1.5f) speed = 1.5f;
     }
 
-    public void Highlight()
+    public override void Highlight()
     {
         //TODO
         Debug.Log("highlighted");
         GetComponent<MeshRenderer>().material = highlightMat;
     }
 
-    public void StopHighlight()
+    public override void StopHighlight()
     {
         //TODO
         Debug.Log("stopped highlight");
         GetComponent<MeshRenderer>().material = defaultMat;
+    }
+
+    public override void FinishedLoop()
+    {
+        // set cd
+        cdTimer = cd;
+
+        // back to 3d model
+        state = SceneObjectState.DDD;
+        //TODO
+
     }
 }

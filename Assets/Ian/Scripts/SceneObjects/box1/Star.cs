@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Star : MonoBehaviour
+public class Star : SceneObject
 {
     public Material highlightMat;
     private Material defaultMat;
@@ -25,17 +25,26 @@ public class Star : MonoBehaviour
         Debug.Log("shoot star");
     }
 
-    public void Highlight()
+    public override void Highlight()
     {
         //TODO
         Debug.Log("highlighted");
         GetComponent<MeshRenderer>().material = highlightMat;
     }
 
-    public void StopHighlight()
+    public override void StopHighlight()
     {
         //TODO
         Debug.Log("stopped highlight");
         GetComponent<MeshRenderer>().material = defaultMat;
+    }
+
+    public override void FinishedLoop()
+    {
+        //TODO
+        // set cd
+
+        // back to 3d model
+
     }
 }

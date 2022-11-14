@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AppleTree : MonoBehaviour
+public class AppleTree : SceneObject
 {
+    public SceneObjectState state = SceneObjectState.DDD;
+
     public GameObject[] FallObjects;
     public int currentObjectIndex;
+
 
     public float speed;
 
@@ -14,7 +17,7 @@ public class AppleTree : MonoBehaviour
 
     private Animator anim;
 
-    private float cd = 3f;
+    private float cd = 2f;
     private float cdTimer = 0f;
 
     // Start is called before the first frame update
@@ -37,18 +40,17 @@ public class AppleTree : MonoBehaviour
             {
                 anim.speed = (speed > 1f) ? 1f : speed;
 
-                if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
-                {
-                    cdTimer = cd;
-                }
+                if (anim.speed > 0f && state == SceneObjectState.DDD) state = SceneObjectState.DD;
             }
-
-            cdTimer -= Time.deltaTime;
-            if (cdTimer <= 0f)
+            else
             {
-                //TODO: play the animation from the beginning
-                //anim.Play("xxx", 0, 0f);
-                cdTimer = 0f;
+                cdTimer -= Time.deltaTime;
+                if (cdTimer <= 0f)
+                {
+                    //TODO: play the animation from the beginning
+                    //anim.Play("xxx", 0, 0f);
+                    cdTimer = 0f;
+                }
             }
         }
 
@@ -63,18 +65,29 @@ public class AppleTree : MonoBehaviour
         if (speed >= 1f) speed = 1f;
     }
 
-    public void Highlight()
+    public override void Highlight()
     {
         //TODO
         Debug.Log("highlighted");
         GetComponent<MeshRenderer>().material = highlightMat;
     }
 
-    public void StopHighlight()
+    public override void StopHighlight()
     {
         //TODO
         Debug.Log("stopped highlight");
         GetComponent<MeshRenderer>().material = defaultMat;
+    }
+
+    public override void FinishedLoop()
+    {
+        // set cd
+        cdTimer = cd;
+
+        // back to 3d model
+        state = SceneObjectState.DDD;
+        //TODO
+
     }
 
     public void Fall()

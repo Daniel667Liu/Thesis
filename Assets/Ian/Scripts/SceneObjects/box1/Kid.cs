@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Kid : MonoBehaviour
+public class Kid : SceneObject
 {
+    public SceneObjectState state = SceneObjectState.DDD;
+
     public Material highlightMat;
     private Material defaultMat;
 
@@ -27,6 +29,8 @@ public class Kid : MonoBehaviour
         Debug.Log("raised hand");
 
         if (anim != null) anim.SetTrigger("PLACEHOLDER");
+
+        state = SceneObjectState.DD;
     }
 
     public void DropHand()
@@ -36,17 +40,26 @@ public class Kid : MonoBehaviour
         if (anim != null) anim.SetTrigger("PLACEHOLDER");
     }
 
-    public void Highlight()
+    public override void Highlight()
     {
         //TODO
         Debug.Log("highlighted");
         GetComponent<MeshRenderer>().material = highlightMat;
     }
 
-    public void StopHighlight()
+    public override void StopHighlight()
     {
         //TODO
         Debug.Log("stopped highlight");
         GetComponent<MeshRenderer>().material = defaultMat;
+    }
+
+    public override void FinishedLoop()
+    {
+        // REMARK: this should be called at the end of raise hand, and there should be a certain amount of empty frame, which will be the delay before which it turns into 3D
+
+        // back to 3d model
+        state = SceneObjectState.DDD;
+        //TODO
     }
 }
