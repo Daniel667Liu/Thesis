@@ -5,6 +5,8 @@ using UnityEngine;
 public class Firefly : MonoBehaviour
 {
     public float speed;
+    public Material highlightMat;
+    private Material defaultMat;
 
     private Animator anim;
 
@@ -12,6 +14,7 @@ public class Firefly : MonoBehaviour
     void Start()
     {
         if (anim == null) anim = GetComponent<Animator>();
+        defaultMat = GetComponent<MeshRenderer>().material;
     }
 
     // Update is called once per frame
@@ -34,11 +37,13 @@ public class Firefly : MonoBehaviour
     {
         //TODO
         Debug.Log("highlighted");
+        GetComponent<MeshRenderer>().material = highlightMat;
     }
 
     public void StopHighlight()
     {
         //TODO
         Debug.Log("stopped highlight");
+        GetComponent<MeshRenderer>().material = defaultMat;
     }
 }

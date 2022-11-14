@@ -5,7 +5,7 @@ using UnityEngine;
 public class TreeInteraction : Interaction
 {
     public List<KeyCode> keys = new List<KeyCode>();
-    public Tree tree;
+    public AppleTree tree;
 
     private int prevInd;
 

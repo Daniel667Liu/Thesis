@@ -597,7 +597,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78b05a13f79e53d45a62ece6342bb056, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FallObjects: []
+  currentObjectIndex: 0
   speed: 0
+  highlightMat: {fileID: 2100000, guid: 8994ef64961700643aadb5269eb120ab, type: 2}
 --- !u!65 &142412579
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1669,6 +1672,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
+  highlightMat: {fileID: 2100000, guid: 8994ef64961700643aadb5269eb120ab, type: 2}
 --- !u!1 &247400135
 GameObject:
   m_ObjectHideFlags: 0
@@ -2821,7 +2825,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 52d314ade1903174f8cae8c3974c50d9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.6273585, b: 0.6273585, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -3199,7 +3203,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 52d314ade1903174f8cae8c3974c50d9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.6273585, b: 0.6273585, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -3964,6 +3968,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6013f195b9eed94cad9243c7ab3e8a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  highlightMat: {fileID: 2100000, guid: 8994ef64961700643aadb5269eb120ab, type: 2}
 --- !u!65 &625253006
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8982,7 +8987,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1395174693
 Transform:
   m_ObjectHideFlags: 0
@@ -9377,6 +9382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de8d5b6e881388b40a5e7edf507b4049, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  highlightMat: {fileID: 0}
 --- !u!65 &1457910151
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11781,6 +11787,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de8d5b6e881388b40a5e7edf507b4049, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  highlightMat: {fileID: 2100000, guid: 8994ef64961700643aadb5269eb120ab, type: 2}
 --- !u!65 &1814895485
 BoxCollider:
   m_ObjectHideFlags: 0
