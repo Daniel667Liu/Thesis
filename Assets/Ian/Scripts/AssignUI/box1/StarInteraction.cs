@@ -5,7 +5,7 @@ using UnityEngine;
 public class StarInteraction : Interaction
 {
     public List<KeyCode> keys = new List<KeyCode>(3);
-    public Star star;
+    public StarParent starParent;
 
     private int prevInd;
     private int accum;
@@ -31,12 +31,12 @@ public class StarInteraction : Interaction
 
     public override void HighlightObject()
     {
-        star.Highlight();
+        starParent.Highlight();
     }
 
     public override void StopHighlightObject()
     {
-        star.StopHighlight();
+        starParent.StopHighlight();
     }
 
     private void checkInput()
@@ -63,7 +63,7 @@ public class StarInteraction : Interaction
             accum++;
             if (accum == 2)
             {
-                star.ShootStar();
+                starParent.ShootStar();
             }
         }
         else

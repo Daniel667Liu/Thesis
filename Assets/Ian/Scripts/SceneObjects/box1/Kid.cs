@@ -5,6 +5,8 @@ using UnityEngine;
 public class Kid : SceneObject
 {
     public SceneObjectState state = SceneObjectState.DDD;
+    public GameObject TwoDParent;
+    public GameObject ThreeDParent;
 
     public Material highlightMat;
     private Material defaultMat;
@@ -54,12 +56,20 @@ public class Kid : SceneObject
         GetComponent<MeshRenderer>().material = defaultMat;
     }
 
+    public override void StartedLoop()
+    {
+        state = SceneObjectState.DD;
+        TwoDParent.SetActive(true);
+        ThreeDParent.SetActive(false);
+    }
+
     public override void FinishedLoop()
     {
         // REMARK: this should be called at the end of raise hand, and there should be a certain amount of empty frame, which will be the delay before which it turns into 3D
 
         // back to 3d model
         state = SceneObjectState.DDD;
-        //TODO
+        ThreeDParent.SetActive(true);
+        TwoDParent.SetActive(false);
     }
 }

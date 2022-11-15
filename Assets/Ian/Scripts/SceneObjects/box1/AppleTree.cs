@@ -5,6 +5,8 @@ using UnityEngine;
 public class AppleTree : SceneObject
 {
     public SceneObjectState state = SceneObjectState.DDD;
+    public GameObject TwoDParent;
+    public GameObject ThreeDParent;
 
     public GameObject[] FallObjects;
     public int currentObjectIndex;
@@ -40,15 +42,18 @@ public class AppleTree : SceneObject
             {
                 anim.speed = (speed > 1f) ? 1f : speed;
 
-                if (anim.speed > 0f && state == SceneObjectState.DDD) state = SceneObjectState.DD;
+                if (anim.speed > 0f && state == SceneObjectState.DDD)
+                {
+                    //TODO: play the animation from the beginning
+                    //anim.Play("xxx", 0, 0f);
+                    state = SceneObjectState.DD;
+                }
             }
             else
             {
                 cdTimer -= Time.deltaTime;
                 if (cdTimer <= 0f)
                 {
-                    //TODO: play the animation from the beginning
-                    //anim.Play("xxx", 0, 0f);
                     cdTimer = 0f;
                 }
             }
@@ -79,6 +84,13 @@ public class AppleTree : SceneObject
         GetComponent<MeshRenderer>().material = defaultMat;
     }
 
+    public override void StartedLoop()
+    {
+        state = SceneObjectState.DD;
+        TwoDParent.SetActive(true);
+        ThreeDParent.SetActive(false);
+    }
+
     public override void FinishedLoop()
     {
         // set cd
@@ -86,8 +98,9 @@ public class AppleTree : SceneObject
 
         // back to 3d model
         state = SceneObjectState.DDD;
-        //TODO
-
+        ThreeDParent.SetActive(true);
+        TwoDParent.SetActive(false);
+        
     }
 
     public void Fall()
