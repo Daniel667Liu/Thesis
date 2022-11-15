@@ -9,7 +9,7 @@ public class RecordManager : MonoBehaviour
 
     float excuteTime = 0f;
     float currentTime = 0f;
-    List<RecordData> datas;
+    [HideInInspector]public List<RecordData> datas;
     int replayIndex = 0;
     float timeLimit = 0f;
 
