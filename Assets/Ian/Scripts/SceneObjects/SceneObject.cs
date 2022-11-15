@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class SceneObject : MonoBehaviour
 {
+    public abstract void StartedLoop();
     public abstract void FinishedLoop();
     public abstract void Highlight();
     public abstract void StopHighlight();

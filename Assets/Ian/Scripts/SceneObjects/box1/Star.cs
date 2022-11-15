@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class Star : SceneObject
 {
+    public SceneObjectState state = SceneObjectState.DDD;
+    public GameObject TwoDParent;
+    public GameObject ThreeDParent;
+
     public Material highlightMat;
     private Material defaultMat;
+
+    private Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
         defaultMat = GetComponent<MeshRenderer>().material;
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -19,10 +26,20 @@ public class Star : SceneObject
         
     }
 
-    public void ShootStar()
+    public bool ShootStar()
     {
         //TODO
         Debug.Log("shoot star");
+        if (anim != null)
+        {
+            if (state == SceneObjectState.DDD)
+            {
+                anim.SetTrigger("PLACEHOLDER");
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public override void Highlight()
@@ -39,12 +56,18 @@ public class Star : SceneObject
         GetComponent<MeshRenderer>().material = defaultMat;
     }
 
+    public override void StartedLoop()
+    {
+        state = SceneObjectState.DD;
+        TwoDParent.SetActive(true);
+        ThreeDParent.SetActive(false);
+    }
+
     public override void FinishedLoop()
     {
-        //TODO
-        // set cd
-
         // back to 3d model
-
+        state = SceneObjectState.DDD;
+        ThreeDParent.SetActive(true);
+        TwoDParent.SetActive(false);
     }
 }
