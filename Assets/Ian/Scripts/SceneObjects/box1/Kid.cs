@@ -5,6 +5,9 @@ using UnityEngine;
 public class Kid : SceneObject
 {
     public SceneObjectState state = SceneObjectState.DDD;
+    public float delay;
+    public string raiseHandClip;
+    public string dropHandClip;
     public GameObject TwoDParent;
     public GameObject ThreeDParent;
 
@@ -13,47 +16,89 @@ public class Kid : SceneObject
 
     private Animator anim;
 
+
+    private float cdTimer;
+    private bool cd;
+
     // Start is called before the first frame update
     void Start()
     {
-        anim = GetComponent<Animator>();
-        defaultMat = GetComponent<MeshRenderer>().material;
+        anim = TwoDParent.GetComponent<Animator>();
+        defaultMat = ThreeDParent.GetComponent<MeshRenderer>().material;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (cd)
+        {
+            cdTimer += Time.deltaTime;
+            if (cdTimer > delay)
+            {
+                FinishedLoop();
+                cd = false;
+            }
+        }
     }
 
     public void RaiseHand()
     {
         Debug.Log("raised hand");
 
-        if (anim != null) anim.SetTrigger("PLACEHOLDER");
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName(dropHandClip))
+        {
+            float n = anim.GetCurrentAnimatorStateInfo(0).normalizedTime;
+            anim.Play(raiseHandClip, 0, 1 - n);
+            resetCD();
 
-        state = SceneObjectState.DD;
+            if (state == SceneObjectState.DDD)
+            {
+                StartedLoop();
+            }
+        }
+        else if (anim.GetCurrentAnimatorStateInfo(0).IsName(dropHandClip))
+        {
+            // seems need nothing here? not sure
+            anim.Play(raiseHandClip, 0, 0f);
+            resetCD();
+
+            if (state == SceneObjectState.DDD)
+            {
+                StartedLoop();
+            }
+        }
+
     }
 
     public void DropHand()
     {
         Debug.Log("dropped hand");
 
-        if (anim != null) anim.SetTrigger("PLACEHOLDER");
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName(raiseHandClip))
+        {
+            float n = anim.GetCurrentAnimatorStateInfo(0).normalizedTime;
+            anim.Play(dropHandClip, 0, 1 - n);
+            
+            startCD();
+        }
+        else
+        {
+            // seems need nothing here? not sure, or kind of sure?
+        }
     }
-
+    
     public override void Highlight()
     {
         //TODO
         Debug.Log("highlighted");
-        GetComponent<MeshRenderer>().material = highlightMat;
+        ThreeDParent.GetComponent<MeshRenderer>().material = highlightMat;
     }
 
     public override void StopHighlight()
     {
         //TODO
         Debug.Log("stopped highlight");
-        GetComponent<MeshRenderer>().material = defaultMat;
+        ThreeDParent.GetComponent<MeshRenderer>().material = defaultMat;
     }
 
     public override void StartedLoop()
@@ -71,5 +116,17 @@ public class Kid : SceneObject
         state = SceneObjectState.DDD;
         ThreeDParent.SetActive(true);
         TwoDParent.SetActive(false);
+    }
+
+    private void resetCD()
+    {
+        cdTimer = 0f;
+        cd = false;
+    }
+
+    private void startCD()
+    {
+        cdTimer = 0f;
+        cd = true;
     }
 }
