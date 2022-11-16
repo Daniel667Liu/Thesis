@@ -16,8 +16,8 @@ public class Star : SceneObject
     // Start is called before the first frame update
     void Start()
     {
-        defaultMat = GetComponent<MeshRenderer>().material;
-        anim = GetComponent<Animator>();
+        defaultMat = ThreeDParent.GetComponent<MeshRenderer>().material;
+        anim = TwoDParent.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -46,14 +46,14 @@ public class Star : SceneObject
     {
         //TODO
         Debug.Log("highlighted");
-        GetComponent<MeshRenderer>().material = highlightMat;
+        ThreeDParent.GetComponent<MeshRenderer>().material = highlightMat;
     }
 
     public override void StopHighlight()
     {
         //TODO
         Debug.Log("stopped highlight");
-        GetComponent<MeshRenderer>().material = defaultMat;
+        ThreeDParent.GetComponent<MeshRenderer>().material = defaultMat;
     }
 
     public override void StartedLoop()
