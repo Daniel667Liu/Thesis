@@ -24,7 +24,7 @@ public class Kid : SceneObject
     void Start()
     {
         anim = TwoDParent.GetComponent<Animator>();
-        defaultMat = ThreeDParent.GetComponent<MeshRenderer>().material;
+        defaultMat = ThreeDParent.transform.GetChild(0).GetComponent<MeshRenderer>().material;
     }
 
     // Update is called once per frame
@@ -45,27 +45,31 @@ public class Kid : SceneObject
     {
         Debug.Log("raised hand");
 
+        if (state == SceneObjectState.DDD)
+        {
+            StartedLoop();
+        }
+
         if (anim.GetCurrentAnimatorStateInfo(0).IsName(dropHandClip))
         {
             float n = anim.GetCurrentAnimatorStateInfo(0).normalizedTime;
-            anim.Play(raiseHandClip, 0, 1 - n);
+            float s = 0f;
+            if (n < 1)
+            {
+                s = 1 - n;
+            }
+            anim.Play(raiseHandClip, 0, s);
+
             resetCD();
 
-            if (state == SceneObjectState.DDD)
-            {
-                StartedLoop();
-            }
         }
-        else if (anim.GetCurrentAnimatorStateInfo(0).IsName(dropHandClip))
+        else if (anim.GetCurrentAnimatorStateInfo(0).IsName("New State"))
         {
+            Debug.Log(anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
             // seems need nothing here? not sure
             anim.Play(raiseHandClip, 0, 0f);
             resetCD();
 
-            if (state == SceneObjectState.DDD)
-            {
-                StartedLoop();
-            }
         }
 
     }
@@ -77,7 +81,14 @@ public class Kid : SceneObject
         if (anim.GetCurrentAnimatorStateInfo(0).IsName(raiseHandClip))
         {
             float n = anim.GetCurrentAnimatorStateInfo(0).normalizedTime;
-            anim.Play(dropHandClip, 0, 1 - n);
+            Debug.Log(n);
+            float s = 0f;
+            if (n < 1)
+            {
+                s = 1 - n;
+            }
+            anim.Play(dropHandClip, 0, s);
+            //anim.speed = 1f;
             
             startCD();
         }
@@ -91,14 +102,20 @@ public class Kid : SceneObject
     {
         //TODO
         Debug.Log("highlighted");
-        ThreeDParent.GetComponent<MeshRenderer>().material = highlightMat;
+        for (int i=0; i<ThreeDParent.transform.childCount; i++)
+        {
+            ThreeDParent.transform.GetChild(i).GetComponent<MeshRenderer>().material = highlightMat;
+        }
     }
 
     public override void StopHighlight()
     {
         //TODO
         Debug.Log("stopped highlight");
-        ThreeDParent.GetComponent<MeshRenderer>().material = defaultMat;
+        for (int i = 0; i < ThreeDParent.transform.childCount; i++)
+        {
+            ThreeDParent.transform.GetChild(i).GetComponent<MeshRenderer>().material = defaultMat;
+        }
     }
 
     public override void StartedLoop()
