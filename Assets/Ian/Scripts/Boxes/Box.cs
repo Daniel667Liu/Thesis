@@ -21,7 +21,7 @@ public class Box : MonoBehaviour
         GameObject hitManual = raycast(manualLayer);
         if (hitManual != null)
         {
-            if (hitManual == manual)
+            if (hitManual == manual.transform.GetChild(0).gameObject)
             {
                 if (manual.GetComponent<Manual>().shown == false)
                 {

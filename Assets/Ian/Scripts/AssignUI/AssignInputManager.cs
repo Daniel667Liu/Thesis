@@ -38,7 +38,7 @@ public class AssignInputManager : MonoBehaviour
             if (oldHover != null) oldHover.GetComponent<Interaction>().StopHighlightObject();
         }
 
-        if (transform.parent.gameObject.GetComponent<Manual>().shown == true)
+        if (transform.parent.parent.gameObject.GetComponent<Manual>().shown == true)
         {
             // UI drag and drop
             if (hoverObject != null)

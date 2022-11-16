@@ -11,7 +11,7 @@ public class Manual : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (anim == null) anim = GetComponent<Animator>();
+        if (anim == null) anim = transform.GetChild(0).GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -29,10 +29,10 @@ public class Manual : MonoBehaviour
 
     public void ManualDown()
     {
-        anim.SetFloat("speed", -1f);
-        if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+        anim.SetFloat("speed", 1f);
+        if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime <= 0.01f)
         {
-            anim.Play("down", 0, 1f);
+            anim.Play("down", 0, 0f);
         }
 
         shown = false;
@@ -40,10 +40,10 @@ public class Manual : MonoBehaviour
 
     public void ManualUp()
     {
-        anim.SetFloat("speed", 1f);
-        if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime <= 0.01f)
+        anim.SetFloat("speed", -1f);
+        if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
         {
-            anim.Play("down", 0, 0f);
+            anim.Play("down", 0, 1f);
         }
 
         shown = true;
