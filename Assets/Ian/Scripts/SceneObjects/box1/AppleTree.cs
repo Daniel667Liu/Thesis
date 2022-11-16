@@ -43,9 +43,11 @@ public class AppleTree : SceneObject
                 cd = false;
             }
         }
-        if (speed == 0 && !cd && anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.7f)
+        if (speed == 0 && !cd)
         {
-            startCD();
+            float n = anim.GetCurrentAnimatorStateInfo(0).normalizedTime;
+            if ( n - Mathf.Floor(n) >= 0.7f)
+                startCD();
         }
 
         speed -= Time.deltaTime * 2f;

@@ -10,10 +10,10 @@ public class StarParent : MonoBehaviour
 
     private void Start()
     {
-        for (int i=0; i<transform.childCount; i++)
+        /*for (int i=0; i<transform.childCount; i++)
         {
             stars.Add(transform.GetChild(i).gameObject.GetComponent<Star>());
-        }
+        }*/
     }
 
     public void ShootStar()

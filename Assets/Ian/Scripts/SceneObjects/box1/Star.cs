@@ -34,7 +34,8 @@ public class Star : SceneObject
         {
             if (state == SceneObjectState.DDD)
             {
-                anim.SetTrigger("PLACEHOLDER");
+                StartedLoop();
+                anim.SetTrigger("fly");
                 return true;
             }
         }
