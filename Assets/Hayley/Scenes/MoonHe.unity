@@ -1688,7 +1688,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 1
   delay: 1
-  shakeClip: tree_anim_big_V1
+  shakeClip: tree_anim_V1
   TwoDParent: {fileID: 727680184}
   ThreeDParent: {fileID: 1569387111}
   FallObjects:
@@ -4276,7 +4276,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &727680185
 Animator:
   serializedVersion: 4
@@ -9917,7 +9917,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1569387112
 Transform:
   m_ObjectHideFlags: 0
