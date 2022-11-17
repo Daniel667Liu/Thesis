@@ -28,7 +28,7 @@ public class AppleTree : SceneObject
     void Start()
     {
         if (anim == null) anim = TwoDParent.GetComponent<Animator>();
-        defaultMat = ThreeDParent.GetComponent<MeshRenderer>().material;
+        defaultMat = ThreeDParent.transform.GetChild(0).GetComponent<MeshRenderer>().material;
     }
 
     // Update is called once per frame
@@ -45,8 +45,8 @@ public class AppleTree : SceneObject
         }
         if (speed == 0 && !cd)
         {
-            float n = anim.GetCurrentAnimatorStateInfo(0).normalizedTime;
-            if ( n - Mathf.Floor(n) >= 0.7f)
+            //float n = anim.GetCurrentAnimatorStateInfo(0).normalizedTime;
+            //if ( n - Mathf.Floor(n) >= 0.7f)
                 startCD();
         }
 
@@ -81,14 +81,20 @@ public class AppleTree : SceneObject
     {
         //TODO
         Debug.Log("highlighted");
-        ThreeDParent.GetComponent<MeshRenderer>().material = highlightMat;
+        for (int i=0; i<ThreeDParent.transform.childCount; i++)
+        {
+            ThreeDParent.transform.GetChild(i).GetComponent<MeshRenderer>().material = highlightMat;
+        }
     }
 
     public override void StopHighlight()
     {
         //TODO
         Debug.Log("stopped highlight");
-        ThreeDParent.GetComponent<MeshRenderer>().material = defaultMat;
+        for (int i = 0; i < ThreeDParent.transform.childCount; i++)
+        {
+            ThreeDParent.transform.GetChild(i).GetComponent<MeshRenderer>().material = defaultMat;
+        }
     }
 
     public override void StartedLoop()
@@ -118,7 +124,7 @@ public class AppleTree : SceneObject
         cdTimer = 0f;
         cd = false;
     }
-
+    
     private void startCD()
     {
         cdTimer = 0f;
