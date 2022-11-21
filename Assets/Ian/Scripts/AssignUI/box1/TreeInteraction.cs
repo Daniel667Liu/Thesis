@@ -53,4 +53,14 @@ public class TreeInteraction : Interaction
             prevInd = 1;
         }
     }
+
+    public override List<KeyCode> GetKeys()
+    {
+        List<KeyCode> ret = new List<KeyCode>();
+        for (int i = 0; i < keys.Count; i++)
+        {
+            ret.Add(keys[i]);
+        }
+        return ret;
+    }
 }

@@ -52,5 +52,10 @@ public class KidInteraction : Interaction
         }
     }
 
-    
+    public override List<KeyCode> GetKeys()
+    {
+        List<KeyCode> ret = new List<KeyCode>();
+        ret.Add(key);
+        return ret;
+    }
 }

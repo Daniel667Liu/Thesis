@@ -24,14 +24,14 @@ public class BoxManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.H))
+        /*if (Input.GetKeyDown(KeyCode.H))
         {
             HideCurrentMusicBox();
         }
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             ShowMusicBox(1);
-        }
+        }*/
     }
 
     public void ShowMusicBox(int boxID)

@@ -90,4 +90,9 @@ public class Box : MonoBehaviour
             return null;
         }
     }
+
+    public List<List<KeyCode>> GetKeyGroups()
+    {
+        return manual.GetComponent<Manual>().GetAllKeys();
+    }
 }

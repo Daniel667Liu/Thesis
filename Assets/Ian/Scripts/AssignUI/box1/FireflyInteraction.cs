@@ -45,4 +45,11 @@ public class FireflyInteraction : Interaction
             firefly.Fly();
         }
     }
+
+    public override List<KeyCode> GetKeys()
+    {
+        List<KeyCode> ret = new List<KeyCode>();
+        ret.Add(key);
+        return ret;
+    }
 }
