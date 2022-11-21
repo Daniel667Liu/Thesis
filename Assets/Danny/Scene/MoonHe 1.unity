@@ -650,9 +650,12 @@ MonoBehaviour:
   - {fileID: 586321415}
   - {fileID: 1488164854}
   noiseScalarX: 0.1
-  noiseScalarY: 0.2
-  noiseScalarZ: 0.4
+  noiseScalarY: 0.1
+  noiseScalarZ: 0.1
   speed: 1
+  moveable: 1
+  posUpdateGap: 0
+  timeGap: 1.5
 --- !u!4 &147182597
 Transform:
   m_ObjectHideFlags: 0
@@ -682,7 +685,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 147182595}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 154639e12186ae041b864d36083eb2e5, type: 2}
   m_CullingMode: 0
