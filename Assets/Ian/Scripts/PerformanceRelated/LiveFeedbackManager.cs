@@ -5,7 +5,7 @@ using UnityEngine;
 // this should be in the performance scene load, since it should be refreshed every performance and unique to each time player performances
 public class LiveFeedbackManager : MonoBehaviour
 {
-    public List<feedbackPair<int, string>> feedbackPairs = new List<feedbackPair<int, string>>();
+    private List<feedbackPair<int, string>> feedbackPairs = new List<feedbackPair<int, string>>();
     
     public void LoadLiveFeedback(LiveFeedback fb)
     {
@@ -24,6 +24,8 @@ public class LiveFeedbackManager : MonoBehaviour
             {
                 // found it
                 // DO SOMETHING WITH pair.val
+                // temporary
+
 
                 // remove the pair from feedbackPairs
                 feedbackPairs.Remove(pair);
