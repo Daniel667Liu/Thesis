@@ -5,4 +5,5 @@ using UnityEngine;
 public class Services : MonoBehaviour
 {
     public static BoxManager boxManager;
+    public static SoundEffectManager soundEffectManager;
 }
