@@ -5,6 +5,9 @@ using UnityEngine;
 public class StageManager : MonoBehaviour
 {
     public List<GameObject> allBoxes;
+    public Countdown countDown;
+    public ProgressBar progressBar;
+    public GameObject returnButton;
 
     private PerformanceManager pm;
     private PerformBox performingBox;
@@ -15,6 +18,8 @@ public class StageManager : MonoBehaviour
 
         // create the box at position
         placeBox();
+
+        StartCoroutine(Perform());
     }
 
     private void placeBox()
@@ -33,5 +38,16 @@ public class StageManager : MonoBehaviour
 
         // set the selected box's inputs
         performingBox.AssignAllKeys(pm.selectedBoxKeyGroups);
+    }
+
+    IEnumerator Perform()
+    {
+        performingBox.DisableInput();
+        countDown.StartCountdown();
+        yield return new WaitForSeconds(4f);
+        performingBox.EnableInput();
+        progressBar.StartProgressBar();
+        yield return new WaitForSeconds(20f);
+        returnButton.SetActive(true);
     }
 }
