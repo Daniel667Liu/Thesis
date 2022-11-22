@@ -9583,9 +9583,9 @@ MonoBehaviour:
   nextPerformance: {fileID: 1527207671}
   selectedBoxId: 0
   InfoUI: {fileID: 1011641953}
-  audience: {fileID: 0}
-  desc: {fileID: 0}
-  time: {fileID: 0}
+  audience: {fileID: 136494148}
+  desc: {fileID: 679445357}
+  time: {fileID: 1745104521}
 --- !u!1 &1353275823
 GameObject:
   m_ObjectHideFlags: 0
@@ -10882,6 +10882,7 @@ MonoBehaviour:
   audienceDescription: '"lucky you! those aren''t something you find on the street
     everyday... why don''t you show me what they''re capable of? anything works!"'
   timeLimit: 20
+  LiveFB: {fileID: 11400000, guid: 2dc6e93f8fb15334fa5f7d38ba8c55b8, type: 2}
 --- !u!1 &1530154172
 GameObject:
   m_ObjectHideFlags: 0

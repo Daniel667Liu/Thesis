@@ -11,6 +11,8 @@ public class StageManager : MonoBehaviour
 
     private PerformanceManager pm;
     private PerformBox performingBox;
+    private Performance currentPerformance;
+    
 
     private void Start()
     {
@@ -18,6 +20,11 @@ public class StageManager : MonoBehaviour
 
         // create the box at position
         placeBox();
+
+        // this should probably be in a separate script dedicated to real-time feedback
+        /*// read and setup based on the performance
+        currentPerformance = pm.nextPerformance;*/
+
 
         StartCoroutine(Perform());
     }
@@ -48,6 +55,7 @@ public class StageManager : MonoBehaviour
         performingBox.EnableInput();
         progressBar.StartProgressBar();
         yield return new WaitForSeconds(20f);
+        performingBox.DisableInput();
         returnButton.SetActive(true);
     }
 }
