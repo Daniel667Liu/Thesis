@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Services : MonoBehaviour
+public static class Services
 {
     public static BoxManager boxManager;
     public static SoundEffectManager soundEffectManager;
+    public static LiveFeedbackManager liveFeedbackManager;
 }

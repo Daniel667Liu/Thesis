@@ -6,7 +6,12 @@ using UnityEngine;
 public class LiveFeedbackManager : MonoBehaviour
 {
     private List<feedbackPair<int, string>> feedbackPairs = new List<feedbackPair<int, string>>();
-    
+
+    private void Awake()
+    {
+        Services.liveFeedbackManager = this;
+    }
+
     public void LoadLiveFeedback(LiveFeedback fb)
     {
         foreach (feedbackPair<int, string> pair in fb.feedbackPairs)
