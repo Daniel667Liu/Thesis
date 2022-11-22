@@ -4,10 +4,5 @@ using UnityEngine;
 
 public class pFamily : Performance
 {
-
-
-    public override void StartPerformance()
-    {
-
-    }
+    
 }
