@@ -12,8 +12,5 @@ public abstract class Performance : MonoBehaviour
     public string audienceDescription;
     public int timeLimit;
 
-    public virtual void StartPerformance()
-    {
-
-    }
+    public LiveFeedback LiveFB;
 }

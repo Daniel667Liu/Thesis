@@ -18,9 +18,19 @@ public class PerformanceManager : MonoBehaviour
     public TMP_Text desc;
     public TMP_Text time;
 
+    [Space(5f)]
+    public SocialMediaManager socialMediaManager;
+
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
+        if (Services.performanceManager == null) Services.performanceManager = this;
+        else Destroy(this.gameObject);
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void Start()
@@ -52,6 +62,7 @@ public class PerformanceManager : MonoBehaviour
 
         // hide the performance info ui
         HideInfo();
+        socialMediaManager.HideFollowerUI();
 
         // load the performance scene
         string sceneName = nextPerformance.sceneName;
@@ -61,5 +72,19 @@ public class PerformanceManager : MonoBehaviour
     public void HideInfo()
     {
         InfoUI.SetActive(false);
+    }
+
+    public void ShowInfo()
+    {
+        InfoUI.SetActive(true);
+    }
+
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "MoonHe")
+        {
+            ShowInfo();
+            socialMediaManager.DisplayFollowerUI();
+        }
     }
 }
