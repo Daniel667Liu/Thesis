@@ -16,6 +16,10 @@ public class SoundEffectManager : MonoBehaviour
     {
         Services.soundEffectManager = this;
         audioSources = new List<AudioSource>();
+        for (int i = 0; i < sounds.Count; i++) 
+        {
+            audioSources.Add(null);
+        }
     }
     void Start()
     {
