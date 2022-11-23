@@ -59,4 +59,9 @@ public class StageManager : MonoBehaviour
         performingBox.DisableInput();
         returnButton.SetActive(true);
     }
+
+    public PerformBox GetPerformingBox()
+    {
+        return performingBox;
+    }
 }

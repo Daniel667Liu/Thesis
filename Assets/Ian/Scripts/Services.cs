@@ -8,4 +8,5 @@ public static class Services
     public static SoundEffectManager soundEffectManager;
     public static LiveFeedbackManager liveFeedbackManager;
     public static PerformanceManager performanceManager;
+    public static AudienceExpectation audienceExpectation;
 }

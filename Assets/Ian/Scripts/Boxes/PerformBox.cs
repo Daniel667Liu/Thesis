@@ -8,6 +8,8 @@ public class PerformBox : MonoBehaviour
 
     private GameObject manual;
 
+    public List<EffectAttributes> effectAttributes = new List<EffectAttributes>();
+
     private void Start()
     {
         manual = transform.GetChild(1).gameObject;
@@ -27,5 +29,17 @@ public class PerformBox : MonoBehaviour
     public void EnableInput()
     {
         manual.SetActive(true);
+    }
+
+    public List<AttributeReq> GetAttribute(int effectID)
+    {
+        foreach (EffectAttributes effectA in effectAttributes)
+        {
+            if (effectA.effectID == effectID)
+            {
+                return effectA.attributes;
+            }
+        }
+        return null;
     }
 }
