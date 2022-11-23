@@ -21,6 +21,8 @@ public class PerformanceManager : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
+        if (Services.performanceManager == null) Services.performanceManager = this;
+        else Destroy(this.gameObject);
     }
 
     private void Start()

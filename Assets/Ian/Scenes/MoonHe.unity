@@ -10039,6 +10039,7 @@ GameObject:
   - component: {fileID: 1399618771}
   - component: {fileID: 1399618770}
   - component: {fileID: 1399618772}
+  - component: {fileID: 1399618773}
   m_Layer: 0
   m_Name: Boy2D
   m_TagString: Untagged
@@ -10133,6 +10134,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1399618773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399618768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d540b01da7c20944a63bcc77388c4b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1441869700
 GameObject:
   m_ObjectHideFlags: 0
@@ -12211,6 +12224,7 @@ GameObject:
   - component: {fileID: 1741318948}
   - component: {fileID: 1741318949}
   - component: {fileID: 1741318950}
+  - component: {fileID: 1741318951}
   m_Layer: 0
   m_Name: star2D
   m_TagString: Untagged
@@ -12264,6 +12278,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2cbfdfbe8c5f4c742bfe74f111bfd256, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1741318951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741318947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d540b01da7c20944a63bcc77388c4b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1743490079

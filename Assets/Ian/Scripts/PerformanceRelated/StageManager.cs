@@ -24,6 +24,7 @@ public class StageManager : MonoBehaviour
         // this should probably be in a separate script dedicated to real-time feedback
         /*// read and setup based on the performance
         currentPerformance = pm.nextPerformance;*/
+        Services.liveFeedbackManager.LoadLiveFeedback(pm.nextPerformance.LiveFB);
 
 
         StartCoroutine(Perform());

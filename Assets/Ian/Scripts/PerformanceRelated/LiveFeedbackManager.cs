@@ -22,15 +22,17 @@ public class LiveFeedbackManager : MonoBehaviour
 
     public void CheckForFeedback(int id)
     {
+        Debug.Log("checking feedback");
         for (int i=feedbackPairs.Count - 1; i>= 0; i--)
         {
             feedbackPair<int, string> pair = feedbackPairs[i];
             if (id == pair.key)
             {
+                Debug.Log("found id " + id + ", showing " + pair.val);
                 // found it
                 // DO SOMETHING WITH pair.val
                 // temporary
-
+                GetComponent<TempShowLiveResponse>().Show(pair.val);
 
                 // remove the pair from feedbackPairs
                 feedbackPairs.Remove(pair);
