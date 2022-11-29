@@ -8,7 +8,7 @@ public class LollipopAnim : MonoBehaviour
 
     private void Start()
     {
-        kidAnim = GameObject.Find("Boy2D").GetComponent<KidAnim>();
+        //kidAnim = GameObject.Find("Boy2D").GetComponent<KidAnim>();
     }
 
     public void CheckHand()

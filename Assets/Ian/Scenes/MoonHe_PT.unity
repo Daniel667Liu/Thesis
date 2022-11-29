@@ -12020,9 +12020,9 @@ MonoBehaviour:
     volume: 0
   - clip: {fileID: 0}
     volume: 0
-  - clip: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 67405a18ddb489e48a259989a056fb53, type: 3}
     volume: 0.8
-  - clip: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 0aae6a04c0b11764ea6d1f68cd1dc2c6, type: 3}
     volume: 0.8
 --- !u!4 &1618372673
 Transform:
