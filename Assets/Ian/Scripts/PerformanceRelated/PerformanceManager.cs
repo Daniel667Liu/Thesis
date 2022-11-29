@@ -38,6 +38,22 @@ public class PerformanceManager : MonoBehaviour
         Debug.Log(SceneManager.GetActiveScene().name);
     }
 
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.R))
+        {
+            // save the selected box input group
+            List<List<KeyCode>> _keygroups = Services.boxManager.currentBox.GetKeyGroups();
+            selectedBoxKeyGroups.Clear();
+            for (int i = 0; i < _keygroups.Count; i++)
+            {
+                selectedBoxKeyGroups.Add(_keygroups[i]);
+            }
+
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    }
+
     // update the performance info ui to be about the upcoming performance
     public void UpdatePerformanceInfo()
     {
@@ -81,10 +97,18 @@ public class PerformanceManager : MonoBehaviour
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == "MoonHe")
+        if (scene.name == "MoonHe_PT")
         {
             ShowInfo();
             socialMediaManager.DisplayFollowerUI();
         }
+
+        if (scene.name.Equals("MoonHe_PT") && selectedBoxKeyGroups.Count > 0)
+        {
+            Debug.Log("apply saved keys");
+            Services.boxManager.currentBox.AssignAllKeys(selectedBoxKeyGroups);
+        }
+
+        if (Services.performanceManager != this) Destroy(this.gameObject);
     }
 }

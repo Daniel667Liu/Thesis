@@ -10,7 +10,7 @@ public class Box : MonoBehaviour
 
     private GameObject manual;
 
-    private void Start()
+    private void Awake()
     {
         manual = transform.GetChild(1).gameObject;
     }
@@ -94,5 +94,11 @@ public class Box : MonoBehaviour
     public List<List<KeyCode>> GetKeyGroups()
     {
         return manual.GetComponent<Manual>().GetAllKeys();
+    }
+
+    public void AssignAllKeys(List<List<KeyCode>> keyGroups)
+    {
+        Debug.Log(manual == null);
+        manual.GetComponent<Manual>().AssignAllKeys(keyGroups);
     }
 }

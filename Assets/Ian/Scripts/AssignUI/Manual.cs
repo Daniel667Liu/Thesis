@@ -45,7 +45,7 @@ public class Manual : MonoBehaviour
     public void ManualUp()
     {
         anim.SetFloat("speed", -1f);
-        if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+        if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f || anim.GetCurrentAnimatorStateInfo(0).IsName("default"))
         {
             anim.Play("down", 0, 1f);
         }

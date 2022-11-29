@@ -6,11 +6,11 @@ public class PerformBox : MonoBehaviour
 {
     public int id;
 
-    private GameObject manual;
+    public GameObject manual;
 
     public List<EffectAttributes> effectAttributes = new List<EffectAttributes>();
 
-    private void Start()
+    private void Awake()
     {
         manual = transform.GetChild(1).gameObject;
 
@@ -18,6 +18,7 @@ public class PerformBox : MonoBehaviour
 
     public void AssignAllKeys(List<List<KeyCode>> keyGroups)
     {
+        Debug.Log(manual == null);
         manual.GetComponent<Manual>().AssignAllKeys(keyGroups);
     }
 
