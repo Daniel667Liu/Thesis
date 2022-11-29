@@ -13,6 +13,10 @@ public class LollipopAnim : MonoBehaviour
 
     public void CheckHand()
     {
+        GameObject kd = GameObject.Find("Boy2D");
+        if (kd == null) return;
+        kidAnim = kd.GetComponent<KidAnim>();
+
         if (kidAnim.isHandUp && !kidAnim.isHandOccupied)
         {
             kidAnim.EatLollipop();

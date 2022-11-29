@@ -5403,6 +5403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cbfdfbe8c5f4c742bfe74f111bfd256, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  kidAnim: {fileID: 1399618774}
   isCaught: 0
 --- !u!1 &786361452
 GameObject:
@@ -10075,6 +10076,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cbfdfbe8c5f4c742bfe74f111bfd256, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  kidAnim: {fileID: 1399618774}
   isCaught: 0
 --- !u!1 &1362253813
 GameObject:
@@ -10552,6 +10554,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isHandUp: 0
+  isHandOccupied: 0
 --- !u!1 &1441869700
 GameObject:
   m_ObjectHideFlags: 0
@@ -12211,6 +12214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cbfdfbe8c5f4c742bfe74f111bfd256, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  kidAnim: {fileID: 1399618774}
   isCaught: 0
 --- !u!1 &1658182574
 GameObject:

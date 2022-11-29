@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StarAnim : MonoBehaviour
 {
-    private KidAnim kidAnim;
+    public KidAnim kidAnim;
 
     public bool isCaught;
 
@@ -12,7 +12,7 @@ public class StarAnim : MonoBehaviour
 
     private void Start()
     {
-        kidAnim = GameObject.Find("Boy2D").GetComponent<KidAnim>();
+        //kidAnim = GameObject.Find("Boy2D").GetComponent<KidAnim>();
     }
 
     private void Update()
