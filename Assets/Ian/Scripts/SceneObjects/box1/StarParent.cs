@@ -18,6 +18,14 @@ public class StarParent : MonoBehaviour
 
     public void ShootStar()
     {
+        if (stars[nextStarInd] == null)
+        {
+            nextStarInd++;
+            if (nextStarInd >= stars.Count)
+            {
+                nextStarInd = 0;
+            }
+        }
         if (stars[nextStarInd].GetComponent<Star>().ShootStar())
         {
             nextStarInd++;

@@ -139,8 +139,6 @@ public class Kid : SceneObject
 
     public override void FinishedLoop()
     {
-        // REMARK: this should be called at the end of raise hand, and there should be a certain amount of empty frame, which will be the delay before which it turns into 3D
-
         // back to 3d model
         state = SceneObjectState.DDD;
         ThreeDParent.SetActive(true);

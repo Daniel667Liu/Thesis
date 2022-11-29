@@ -29,4 +29,9 @@ public class KidAnim : MonoBehaviour
         HandDown();
         isHandOccupied = false;
     }
+
+    public void Reset()
+    {
+        transform.parent.GetComponent<Kid>().FinishedLoop();
+    }
 }
