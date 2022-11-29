@@ -3,12 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public struct SoundEffect
+{
+    public AudioClip clip;
+    public float volume;
+}
+
 public class SoundEffectManager : MonoBehaviour
 {
     public AudioSource audioSourcePrefab;
-    public List<AudioClip> sounds;
+    //public List<AudioClip> sounds;
     [HideInInspector] public List<AudioSource> audioSources;
-    public List<float> volumes;
+    public List<SoundEffect> soundEffects = new List<SoundEffect>();
     
     
     // Start is called before the first frame update
@@ -16,7 +23,7 @@ public class SoundEffectManager : MonoBehaviour
     {
         Services.soundEffectManager = this;
         audioSources = new List<AudioSource>();
-        for (int i = 0; i < sounds.Count; i++) 
+        for (int i = 0; i < soundEffects.Count; i++) 
         {
             audioSources.Add(null);
         }
@@ -40,21 +47,21 @@ public class SoundEffectManager : MonoBehaviour
         {
             AudioSource audioSource = Instantiate(audioSourcePrefab, new Vector3(0, 0, 0), Quaternion.identity, data.audioSourceParent);
             audioSource.playOnAwake = false;
-            audioSource.volume = volumes[data.soundIndex];
+            audioSource.volume = soundEffects[data.soundIndex].volume;
             audioSources[data.soundIndex] = audioSource;
         }
         else 
         {
             //for test, used to change the volumes during play mode
-            audioSources[data.soundIndex].volume = volumes[data.soundIndex];
+            audioSources[data.soundIndex].volume = soundEffects[data.soundIndex].volume;
         }
         switch (data.playMode) 
         {
             case 0://trigger
-                audioSources[data.soundIndex].PlayOneShot(sounds[data.soundIndex]);
+                audioSources[data.soundIndex].PlayOneShot(soundEffects[data.soundIndex].clip);
                 break;
             case 1://hold
-                audioSources[data.soundIndex].clip = sounds[data.soundIndex];
+                audioSources[data.soundIndex].clip = soundEffects[data.soundIndex].clip;
                 audioSources[data.soundIndex].Play();
                 break;
             default:

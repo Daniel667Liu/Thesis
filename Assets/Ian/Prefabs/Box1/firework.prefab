@@ -64,6 +64,7 @@ GameObject:
   - component: {fileID: 3895785245282402767}
   - component: {fileID: 3895785245282402765}
   - component: {fileID: 3895785245282402764}
+  - component: {fileID: 3242943083435177278}
   m_Layer: 0
   m_Name: firework
   m_TagString: Untagged
@@ -132,7 +133,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 9.22, y: 9.53}
+  m_Size: {x: 9.22, y: 9.536646}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -158,3 +159,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3242943083435177278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3895785245282402766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f96aa761d2ff364bb52f9e7c27c1858, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundIndexs: 03000000
+  playModes: 00000000
