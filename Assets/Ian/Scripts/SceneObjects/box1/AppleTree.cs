@@ -19,6 +19,10 @@ public class AppleTree : SceneObject
     public Material highlightMat;
     private Material defaultMat;
 
+    public bool childLeft;
+    public GameObject appleWithoutChild;
+    public GameObject lolipopWithoutChild;
+
     private Animator anim;
 
     private bool cd;
@@ -115,7 +119,21 @@ public class AppleTree : SceneObject
 
     public void Fall()
     {
-        Instantiate(FallObjects[currentObjectIndex]);
+        if (childLeft)
+        {
+            if (currentObjectIndex == 0)
+            {
+                Instantiate(appleWithoutChild);
+            }
+            else if (currentObjectIndex == 2)
+            {
+                Instantiate(lolipopWithoutChild);
+            }
+        }
+        else
+        {
+            Instantiate(FallObjects[currentObjectIndex]);
+        }
         currentObjectIndex = (currentObjectIndex + 1) % FallObjects.Length;
     }
 

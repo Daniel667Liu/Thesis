@@ -5,7 +5,7 @@ using UnityEngine;
 public class FireflyInteraction : Interaction
 {
     public KeyCode key;
-    public Firefly firefly;
+    public Volcano volcano;
 
     // Start is called before the first frame update
     void Start()
@@ -28,12 +28,12 @@ public class FireflyInteraction : Interaction
 
     public override void HighlightObject()
     {
-        firefly.Highlight();
+        volcano.Highlight();
     }
 
     public override void StopHighlightObject()
     {
-        firefly.StopHighlight();
+        volcano.StopHighlight();
     }
 
     public void checkInput()
@@ -42,7 +42,7 @@ public class FireflyInteraction : Interaction
 
         if (Input.GetKeyDown(key))
         {
-            firefly.Fly();
+            volcano.Erupt();
         }
     }
 
