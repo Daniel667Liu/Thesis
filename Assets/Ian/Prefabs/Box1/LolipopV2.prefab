@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3911825764128818661}
   - component: {fileID: 3911825764128818658}
   - component: {fileID: 6965010970046351771}
+  - component: {fileID: 7390753446122562864}
   m_Layer: 0
   m_Name: LolipopV2
   m_TagString: Untagged
@@ -118,4 +119,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 783774788589ed5489d192a71b2a47c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kidAnim: {fileID: 0}
+--- !u!114 &7390753446122562864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3911825764128818656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f96aa761d2ff364bb52f9e7c27c1858, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundIndexs: 070000000800000009000000
+  playModes: 0000000000000000
