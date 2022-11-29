@@ -8,6 +8,8 @@ public class Kid : SceneObject
     public float delay;
     public string raiseHandClip;
     public string dropHandClip;
+    public string eatLollipopClip;
+    public string eatStarClip;
     public GameObject TwoDParent;
     public GameObject ThreeDParent;
 
@@ -96,6 +98,16 @@ public class Kid : SceneObject
         {
             // seems need nothing here? not sure, or kind of sure?
         }
+    }
+
+    public void EatLollipop()
+    {
+        anim.Play(eatLollipopClip);
+    }
+
+    public void EatStar()
+    {
+        anim.Play(eatStarClip);
     }
     
     public override void Highlight()

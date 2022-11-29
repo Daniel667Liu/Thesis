@@ -13,6 +13,8 @@ public class Star : SceneObject
 
     private Animator anim;
 
+    public bool caught;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -70,5 +72,15 @@ public class Star : SceneObject
         state = SceneObjectState.DDD;
         ThreeDParent.SetActive(true);
         TwoDParent.SetActive(false);
+    }
+
+    public void CaughtByHand()
+    {
+        anim.speed = 0f;
+    }
+
+    public void ReleasedByHand()
+    {
+        anim.speed = 1f;
     }
 }
