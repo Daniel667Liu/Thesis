@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class SoundEffectManager : MonoBehaviour
 {
+    public AudioSource audioSourcePrefab;
     public List<AudioClip> sounds;
     [HideInInspector] public List<AudioSource> audioSources;
-    public AudioSource audioSourcePrefab;
-    
+    public List<float> volumes;
     
     
     // Start is called before the first frame update
@@ -20,6 +20,7 @@ public class SoundEffectManager : MonoBehaviour
         {
             audioSources.Add(null);
         }
+
     }
     void Start()
     {
@@ -35,11 +36,17 @@ public class SoundEffectManager : MonoBehaviour
     public void PlaySound(SoundData data) 
     {
         //if there is no audio source at the index in list, create one and add into list
-        if (audioSources[data.soundIndex] == null) 
+        if (audioSources[data.soundIndex] == null)
         {
-            AudioSource audioSource= Instantiate(audioSourcePrefab, new Vector3(0,0,0), Quaternion.identity,data.audioSourceParent);
+            AudioSource audioSource = Instantiate(audioSourcePrefab, new Vector3(0, 0, 0), Quaternion.identity, data.audioSourceParent);
             audioSource.playOnAwake = false;
+            audioSource.volume = volumes[data.soundIndex];
             audioSources[data.soundIndex] = audioSource;
+        }
+        else 
+        {
+            //for test, used to change the volumes during play mode
+            audioSources[data.soundIndex].volume = volumes[data.soundIndex];
         }
         switch (data.playMode) 
         {
