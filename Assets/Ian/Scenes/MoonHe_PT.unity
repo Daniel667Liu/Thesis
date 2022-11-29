@@ -5363,6 +5363,7 @@ GameObject:
   - component: {fileID: 784747539}
   - component: {fileID: 784747540}
   - component: {fileID: 784747541}
+  - component: {fileID: 784747542}
   m_Layer: 0
   m_Name: star2D
   m_TagString: Untagged
@@ -5420,6 +5421,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   kidAnim: {fileID: 1399618774}
   isCaught: 0
+--- !u!114 &784747542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784747538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f96aa761d2ff364bb52f9e7c27c1858, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundIndexs: 0c000000
+  playModes: 00000000
 --- !u!1 &786361452
 GameObject:
   m_ObjectHideFlags: 0
@@ -10036,6 +10051,7 @@ GameObject:
   - component: {fileID: 1358388900}
   - component: {fileID: 1358388901}
   - component: {fileID: 1358388902}
+  - component: {fileID: 1358388903}
   m_Layer: 0
   m_Name: star2D
   m_TagString: Untagged
@@ -10093,6 +10109,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   kidAnim: {fileID: 1399618774}
   isCaught: 0
+--- !u!114 &1358388903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358388899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f96aa761d2ff364bb52f9e7c27c1858, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundIndexs: 0a000000
+  playModes: 00000000
 --- !u!1 &1362253813
 GameObject:
   m_ObjectHideFlags: 0
@@ -10583,7 +10613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f96aa761d2ff364bb52f9e7c27c1858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundIndexs: 01000000
+  soundIndexs: 010000000d000000
   playModes: 00000000
 --- !u!1 &1441869700
 GameObject:
@@ -12312,6 +12342,7 @@ GameObject:
   - component: {fileID: 1637154852}
   - component: {fileID: 1637154853}
   - component: {fileID: 1637154854}
+  - component: {fileID: 1637154855}
   m_Layer: 0
   m_Name: star2D
   m_TagString: Untagged
@@ -12369,6 +12400,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   kidAnim: {fileID: 1399618774}
   isCaught: 0
+--- !u!114 &1637154855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637154851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f96aa761d2ff364bb52f9e7c27c1858, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundIndexs: 0b000000
+  playModes: 00000000
 --- !u!1 &1658182574
 GameObject:
   m_ObjectHideFlags: 0
