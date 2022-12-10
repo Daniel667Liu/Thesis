@@ -8,7 +8,7 @@ public class AssignInputManager : MonoBehaviour
     public LayerMask keyLayer;
 
     // current hoverbox
-    private GameObject hoverObject;
+    public GameObject hoverObject;
 
     // current box variables
     private GameObject currentBox;
