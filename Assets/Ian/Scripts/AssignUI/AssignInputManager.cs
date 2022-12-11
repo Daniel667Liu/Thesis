@@ -77,7 +77,7 @@ public class AssignInputManager : MonoBehaviour
         box.transform.Rotate(-75f - box.transform.eulerAngles.x, 0f - box.transform.eulerAngles.y, 0f, Space.Self);
         box.transform.SetParent(panelTransform, true);
         Vector3 localPos = box.transform.localPosition;
-        box.transform.localPosition = new Vector3(localPos.x, 0.97f, localPos.z);
+        box.transform.localPosition = new Vector3(localPos.x, 0.5f, localPos.z);
         box.transform.localEulerAngles = Vector3.zero;
         
 
