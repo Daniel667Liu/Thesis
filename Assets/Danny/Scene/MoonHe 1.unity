@@ -5835,6 +5835,7 @@ MonoBehaviour:
   keyLayer:
     serializedVersion: 2
     m_Bits: 128
+  hoverObject: {fileID: 0}
 --- !u!1 &910362397
 GameObject:
   m_ObjectHideFlags: 0
@@ -9475,6 +9476,7 @@ MonoBehaviour:
   keyLayer:
     serializedVersion: 2
     m_Bits: 128
+  hoverObject: {fileID: 0}
 --- !u!1 &1378711045
 GameObject:
   m_ObjectHideFlags: 0
@@ -10410,14 +10412,23 @@ VisualEffect:
       - m_Value: 0.1
         m_Name: Max Size
         m_Overridden: 1
-      - m_Value: 2
+      - m_Value: 5
         m_Name: Loop Duration
         m_Overridden: 1
-      - m_Value: 2
+      - m_Value: 5
         m_Name: ShineSpeed
         m_Overridden: 1
+      - m_Value: 1
+        m_Name: OrbitForce
+        m_Overridden: 1
+      - m_Value: 0.3
+        m_Name: OrbitSpeed
+        m_Overridden: 1
     m_Vector2f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 0, y: 0}
+        m_Name: OrbitCenter
+        m_Overridden: 1
     m_Vector3f:
       m_Array: []
     m_Vector4f:
@@ -10446,14 +10457,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1525184698}
-  m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.58, y: -0.36, z: 3.34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 14
-  m_LocalEulerAnglesHint: {x: 90, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1530154172
 GameObject:
   m_ObjectHideFlags: 0
