@@ -7,13 +7,19 @@ public class StarInteraction : Interaction
     public List<KeyCode> keys = new List<KeyCode>(3);
     public StarParent starParent;
 
+    private Color buttonColor;
+    private Vector3 defaultPos;
+    private Vector3 defaultRot;
+
     private int prevInd;
     private int accum;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        buttonColor = transform.GetChild(1).GetChild(0).GetComponent<MeshRenderer>().material.GetColor("_BaseColor");
+        defaultPos = transform.position;
+        defaultRot = transform.eulerAngles;
     }
 
     // Update is called once per frame
@@ -81,5 +87,20 @@ public class StarInteraction : Interaction
             ret.Add(keys[i]);
         }
         return ret;
+    }
+
+    public override Color GetButtonColor()
+    {
+        return buttonColor;
+    }
+
+    public override Vector3 GetDefaultPos()
+    {
+        return defaultPos;
+    }
+
+    public override Vector3 GetDefaultRot()
+    {
+        return defaultRot;
     }
 }

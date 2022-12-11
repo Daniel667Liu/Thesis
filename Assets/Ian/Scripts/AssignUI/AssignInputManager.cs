@@ -7,8 +7,10 @@ public class AssignInputManager : MonoBehaviour
     public LayerMask inputBoxLayer;
     public LayerMask keyLayer;
 
+    public List<KeyMaterial> keyMats = new List<KeyMaterial>();
+
     // current hoverbox
-    public GameObject hoverObject;
+    private GameObject hoverObject;
 
     // current box variables
     private GameObject currentBox;
@@ -17,7 +19,6 @@ public class AssignInputManager : MonoBehaviour
     private float localZ;
 
     private Plane plane;
-
 
     // Start is called before the first frame update
     void Start()
@@ -67,6 +68,17 @@ public class AssignInputManager : MonoBehaviour
 
     private void setCurrentBox(GameObject box)
     {
+        // parent the button and save default states
+
+            //savedPos = box.transform.position;
+            //savedRot = box.transform.eulerAngles;
+
+            box.transform.SetParent(transform.parent, true);
+            Vector3 localPos = box.transform.localPosition;
+            box.transform.localPosition = new Vector3(localPos.x, 0.14f, localPos.z);
+            box.transform.localEulerAngles = Vector3.zero;
+        
+
         currentBox = box;
         currentZ = Camera.main.WorldToScreenPoint(box.transform.position).z;
         localZ = box.transform.localPosition.y;
@@ -75,36 +87,49 @@ public class AssignInputManager : MonoBehaviour
         
         //currentOffset.z = 0f;
         prepRayMethod();
+
+        for (int i=0; i<currentBox.transform.GetChild(1).childCount; i++)
+        {
+            currentBox.transform.GetChild(1).GetChild(i).GetComponent<MeshRenderer>().material = getMat("none");
+        }
+        updateColors();
     }
 
     private void moveCurrentBox()
     {
-        Vector3 newPos = GetMouseWorldPos() - currentOffset;
+        //Vector3 newPos = GetMouseWorldPos() - currentOffset;
+        Vector3 newPos = GetMouseWorldPos();
         currentBox.transform.position = newPos;
         //Vector3 mouseWP = GetMouseWorldPos();
         //currentBox.transform.position = new Vector3(mouseWP.x, mouseWP.y, 0f);
 
         Vector3 localAdjust = currentBox.transform.localPosition;
-        currentBox.transform.localPosition = new Vector3(localAdjust.x, localZ, localAdjust.z);
+        //currentBox.transform.localPosition = new Vector3(localAdjust.x, localZ, localAdjust.z);
         //currentBox.transform.localPosition = new Vector3(localAdjust.x, localAdjust.y, localZ);
 
-/*
+
         Ray r = new Ray(currentBox.transform.position, Vector3.forward);
         float d;
         plane.Raycast(r, out d);
+        Debug.Log("d: " + d);
         currentBox.transform.position += Vector3.forward * d;
-*/
+
 
         //currentBox.transform.position = new Vector3(newPos.x, newPos.y, currentBox.transform.position.z);
 
         //rayMethod();
+        //reverseScreenPointMethod();
+
     }
 
     private void releaseCurrentBox()
     {
-        SnapCurrentBox();
-
-        // TODO: reset currentBox to initial position if it's outside the paper
+        if (!SnapCurrentBox())
+        {
+            currentBox.transform.SetParent(null);
+            currentBox.transform.position = currentBox.GetComponent<Interaction>().GetDefaultPos();
+            currentBox.transform.eulerAngles = currentBox.GetComponent<Interaction>().GetDefaultRot();
+        }
 
         currentBox = null;
         currentZ = 0f;
@@ -125,7 +150,7 @@ public class AssignInputManager : MonoBehaviour
             {
                 Debug.Log(hit.collider.name);
                 keys.Add(hit.collider.name);
-
+                
                 offset = rayChild.position - hit.collider.gameObject.transform.position;
             }
         }
@@ -137,21 +162,35 @@ public class AssignInputManager : MonoBehaviour
             currentBox.transform.position -= offset;
 
             List<KeyCode> keyCodes = new List<KeyCode>();
-            foreach (string key in keys)
+            for (int i=0; i<keys.Count; i++)
             {
+                string key = keys[i];
                 if (key.Equals("up")) keyCodes.Add(KeyCode.UpArrow);
                 else if (key.Equals("down")) keyCodes.Add(KeyCode.DownArrow);
                 else if (key.Equals("left")) keyCodes.Add(KeyCode.LeftArrow);
                 else if (key.Equals("right")) keyCodes.Add(KeyCode.RightArrow);
+                else if (key.Equals("")) keyCodes.Add(KeyCode.None);
                 else keyCodes.Add((KeyCode)(int)key[0]);
-            }
-            // TODO: assign key function
-            currentBox.GetComponent<Interaction>().AssignKeys(keyCodes);
 
+                Material m = getMat(key);
+                currentBox.transform.GetChild(1).GetChild(i).gameObject.GetComponent<MeshRenderer>().material = m;
+            }
+            updateColors();
+
+            currentBox.GetComponent<Interaction>().AssignKeys(keyCodes);
+            //snapped = true;
             return true;
         }
         else
         {
+            List<KeyCode> keyCodes = new List<KeyCode>();
+            for (int i = 0; i < currentBox.transform.GetChild(0).childCount; i++)
+            {
+                keyCodes.Add(KeyCode.None);
+            }
+
+            currentBox.GetComponent<Interaction>().AssignKeys(keyCodes);
+            //snapped = false;
             return false;
         }
     }
@@ -198,4 +237,81 @@ public class AssignInputManager : MonoBehaviour
         plane.Raycast(r, out planeDist);
         currentBox.transform.position = r.GetPoint(planeDist) + currentOffset;
     }
+
+    private void reverseScreenPointMethod()
+    {
+        Vector3 mouseScreenPos = Input.mousePosition;
+        mouseScreenPos.z = 0f;
+
+        Vector3 objScreenPos = Camera.main.WorldToScreenPoint(currentBox.transform.position);
+
+        Debug.Log(mouseScreenPos.ToString() +", " +objScreenPos.ToString());
+
+        bool xGood = false;
+        bool yGood = false;
+
+        while (!xGood || !yGood)
+        {
+            objScreenPos = Camera.main.WorldToScreenPoint(currentBox.transform.position);
+            
+            // x
+            if (Mathf.Abs(mouseScreenPos.x - objScreenPos.x) < 10f)
+            {
+                // good
+                xGood = true;
+            }
+            else if (objScreenPos.x < mouseScreenPos.x)
+            {
+                currentBox.transform.localPosition += Vector3.right * 0.02f;
+            }
+            else
+            {
+                currentBox.transform.localPosition -= Vector3.right * 0.02f;
+            }
+
+            // y
+            if (Mathf.Abs(mouseScreenPos.y - objScreenPos.y) < 10f)
+            {
+                // good
+                yGood = true;
+            }
+            else if (objScreenPos.y < mouseScreenPos.y)
+            {
+                currentBox.transform.localPosition += Vector3.forward * 0.02f;
+            }
+            else
+            {
+                currentBox.transform.localPosition -= Vector3.forward * 0.02f;
+            }
+        }
+    }
+
+    private Material getMat(string key)
+    {
+        for (int i=0; i<keyMats.Count; i++)
+        {
+            if (keyMats[i].key.Equals(key))
+            {
+                return keyMats[i].mat;
+            }
+        }
+
+        return null;
+    }
+
+    private void updateColors()
+    {
+        for (int i=0; i<currentBox.transform.GetChild(1).childCount; i++)
+        {
+            Color c = currentBox.GetComponent<Interaction>().GetButtonColor();
+            currentBox.transform.GetChild(1).GetChild(i).GetComponent<MeshRenderer>().material.SetColor("_BaseColor", c);
+        }
+    }
+}
+
+[System.Serializable]
+public struct KeyMaterial
+{
+    public string key;
+    public Material mat;
 }
