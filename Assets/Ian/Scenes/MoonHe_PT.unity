@@ -5951,6 +5951,7 @@ GameObject:
   m_Component:
   - component: {fileID: 624822276}
   - component: {fileID: 624822277}
+  - component: {fileID: 624822278}
   m_Layer: 0
   m_Name: Boy
   m_TagString: Untagged
@@ -5993,9 +5994,30 @@ MonoBehaviour:
   dropHandClip: boy_reverse
   eatLollipopClip: boy_eat_lollipop_anim
   eatStarClip: boy_eat_star
+  startFloatClip: boy_start_float
   TwoDParent: {fileID: 1399618768}
   ThreeDParent: {fileID: 6249907259955841071}
   highlightMat: {fileID: 2100000, guid: c8db9e76aa9c2ba46ac37c0798a28d75, type: 2}
+--- !u!95 &624822278
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624822275}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1f51293d149ff5e4da5d54e01b734ded, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &625940133
 GameObject:
   m_ObjectHideFlags: 0
@@ -10530,6 +10552,7 @@ MonoBehaviour:
   dropHandClip: 
   eatLollipopClip: 
   eatStarClip: 
+  startFloatClip: 
   TwoDParent: {fileID: 0}
   ThreeDParent: {fileID: 0}
   highlightMat: {fileID: 0}
@@ -16064,6 +16087,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isHandUp: 0
   isHandOccupied: 0
+  isCharging: 0
 --- !u!114 &1399618775
 MonoBehaviour:
   m_ObjectHideFlags: 0

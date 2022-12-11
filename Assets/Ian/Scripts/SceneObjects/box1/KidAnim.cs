@@ -6,6 +6,7 @@ public class KidAnim : MonoBehaviour
 {
     public bool isHandUp;
     public bool isHandOccupied;
+    public bool isCharging;
 
     public void HandUp()
     {
@@ -28,6 +29,16 @@ public class KidAnim : MonoBehaviour
         transform.parent.GetComponent<Kid>().EatStar();
         HandDown();
         isHandOccupied = false;
+    }
+
+    public void Charging()
+    {
+        isCharging = true;
+    }
+
+    public void StartMoving()
+    {
+        transform.parent.GetComponent<Kid>().GetComponent<Animator>().SetTrigger("float");
     }
 
     public void Reset()
