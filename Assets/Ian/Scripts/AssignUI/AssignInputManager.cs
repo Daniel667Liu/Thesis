@@ -70,13 +70,14 @@ public class AssignInputManager : MonoBehaviour
     {
         // parent the button and save default states
 
-            //savedPos = box.transform.position;
-            //savedRot = box.transform.eulerAngles;
+        //savedPos = box.transform.position;
+        //savedRot = box.transform.eulerAngles;
 
-            box.transform.SetParent(transform.parent, true);
-            Vector3 localPos = box.transform.localPosition;
-            box.transform.localPosition = new Vector3(localPos.x, 0.14f, localPos.z);
-            box.transform.localEulerAngles = Vector3.zero;
+        box.transform.Rotate(-75f - box.transform.eulerAngles.x, 0f - box.transform.eulerAngles.y, 0f, Space.Self);
+        box.transform.SetParent(transform.parent, true);
+        Vector3 localPos = box.transform.localPosition;
+        //box.transform.localPosition = new Vector3(localPos.x, 0.14f, localPos.z);
+        box.transform.localEulerAngles = Vector3.zero;
         
 
         currentBox = box;
@@ -97,8 +98,8 @@ public class AssignInputManager : MonoBehaviour
 
     private void moveCurrentBox()
     {
-        //Vector3 newPos = GetMouseWorldPos() - currentOffset;
-        Vector3 newPos = GetMouseWorldPos();
+        Vector3 newPos = GetMouseWorldPos() - currentOffset;
+        //Vector3 newPos = GetMouseWorldPos();
         currentBox.transform.position = newPos;
         //Vector3 mouseWP = GetMouseWorldPos();
         //currentBox.transform.position = new Vector3(mouseWP.x, mouseWP.y, 0f);
@@ -146,7 +147,7 @@ public class AssignInputManager : MonoBehaviour
         {
             Transform rayChild = currentBox.transform.GetChild(0).GetChild(i);
             RaycastHit hit;
-            if (Physics.Raycast(rayChild.position - rayChild.forward * 2f, rayChild.forward, out hit, Mathf.Infinity, keyLayer))
+            if (Physics.Raycast(rayChild.position - rayChild.forward * 10f, rayChild.forward, out hit, Mathf.Infinity, keyLayer))
             {
                 Debug.Log(hit.collider.name);
                 keys.Add(hit.collider.name);
