@@ -16,6 +16,8 @@ public class AssignInputManager : MonoBehaviour
     private float currentZ;
     private float localZ;
 
+    private Plane plane;
+
 
     // Start is called before the first frame update
     void Start()
@@ -67,17 +69,35 @@ public class AssignInputManager : MonoBehaviour
     {
         currentBox = box;
         currentZ = Camera.main.WorldToScreenPoint(box.transform.position).z;
-        localZ = box.transform.localPosition.z;
+        localZ = box.transform.localPosition.y;
+        //localZ = box.transform.localPosition.z;
         currentOffset = GetMouseWorldPos() - box.transform.position;
+        
+        //currentOffset.z = 0f;
+        prepRayMethod();
     }
 
     private void moveCurrentBox()
     {
         Vector3 newPos = GetMouseWorldPos() - currentOffset;
         currentBox.transform.position = newPos;
+        //Vector3 mouseWP = GetMouseWorldPos();
+        //currentBox.transform.position = new Vector3(mouseWP.x, mouseWP.y, 0f);
 
         Vector3 localAdjust = currentBox.transform.localPosition;
-        currentBox.transform.localPosition = new Vector3(localAdjust.x, localAdjust.y, localZ);
+        currentBox.transform.localPosition = new Vector3(localAdjust.x, localZ, localAdjust.z);
+        //currentBox.transform.localPosition = new Vector3(localAdjust.x, localAdjust.y, localZ);
+
+/*
+        Ray r = new Ray(currentBox.transform.position, Vector3.forward);
+        float d;
+        plane.Raycast(r, out d);
+        currentBox.transform.position += Vector3.forward * d;
+*/
+
+        //currentBox.transform.position = new Vector3(newPos.x, newPos.y, currentBox.transform.position.z);
+
+        //rayMethod();
     }
 
     private void releaseCurrentBox()
@@ -153,7 +173,29 @@ public class AssignInputManager : MonoBehaviour
     private Vector3 GetMouseWorldPos()
     {
         Vector3 screenPoint = Input.mousePosition;
-        screenPoint.z = currentZ;
+        //screenPoint.z = currentZ;
+        screenPoint.z = Camera.main.WorldToScreenPoint(currentBox.transform.position).z;
         return Camera.main.ScreenToWorldPoint(screenPoint);
+    }
+
+
+    private void prepRayMethod()
+    {
+        plane = new Plane(-currentBox.transform.up, currentBox.transform.position);
+        Ray r = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        float planeDist;
+        plane.Raycast(r, out planeDist);
+
+        //currentOffset = currentBox.transform.position - r.GetPoint(planeDist);
+    }
+
+    private void rayMethod()
+    {
+        Ray r = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        float planeDist;
+        plane.Raycast(r, out planeDist);
+        currentBox.transform.position = r.GetPoint(planeDist) + currentOffset;
     }
 }
