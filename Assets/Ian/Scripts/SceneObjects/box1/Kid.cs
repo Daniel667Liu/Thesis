@@ -10,6 +10,7 @@ public class Kid : SceneObject
     public string dropHandClip;
     public string eatLollipopClip;
     public string eatStarClip;
+    public string startFloatClip;
     public GameObject TwoDParent;
     public GameObject ThreeDParent;
 
@@ -45,6 +46,14 @@ public class Kid : SceneObject
 
     public void RaiseHand()
     {
+        // if kid is charging, start floating instead of raisehand
+        if (transform.GetChild(1).GetComponent<KidAnim>().isCharging)
+        {
+            anim.Play(startFloatClip);
+            transform.GetChild(1).GetComponent<KidAnim>().isCharging = false;
+        }
+
+
         Debug.Log("raised hand");
 
         if (state == SceneObjectState.DDD)
