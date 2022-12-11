@@ -6,6 +6,7 @@ public class AssignInputManager : MonoBehaviour
 {
     public LayerMask inputBoxLayer;
     public LayerMask keyLayer;
+    public Transform panelTransform;
 
     public List<KeyMaterial> keyMats = new List<KeyMaterial>();
 
@@ -74,7 +75,7 @@ public class AssignInputManager : MonoBehaviour
         //savedRot = box.transform.eulerAngles;
 
         box.transform.Rotate(-75f - box.transform.eulerAngles.x, 0f - box.transform.eulerAngles.y, 0f, Space.Self);
-        box.transform.SetParent(transform.parent, true);
+        box.transform.SetParent(panelTransform, true);
         Vector3 localPos = box.transform.localPosition;
         box.transform.localPosition = new Vector3(localPos.x, 0.97f, localPos.z);
         box.transform.localEulerAngles = Vector3.zero;
@@ -94,6 +95,7 @@ public class AssignInputManager : MonoBehaviour
             currentBox.transform.GetChild(1).GetChild(i).GetComponent<MeshRenderer>().material = getMat("none");
         }
         updateColors();
+        currentBox.GetComponent<Interaction>().StopButtonAnim();
     }
 
     private void moveCurrentBox()
@@ -177,7 +179,7 @@ public class AssignInputManager : MonoBehaviour
                 currentBox.transform.GetChild(1).GetChild(i).gameObject.GetComponent<MeshRenderer>().material = m;
             }
             updateColors();
-
+            currentBox.GetComponent<Interaction>().PlayButtonAnim();
             currentBox.GetComponent<Interaction>().AssignKeys(keyCodes);
             //snapped = true;
             return true;

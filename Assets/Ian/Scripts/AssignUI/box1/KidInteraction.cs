@@ -78,4 +78,15 @@ public class KidInteraction : Interaction
     {
         return defaultRot;
     }
+
+    public override void PlayButtonAnim()
+    {
+        transform.GetChild(1).GetComponent<Animator>().ResetTrigger("stop");
+        transform.GetChild(1).GetComponent<Animator>().SetTrigger("play");
+    }
+
+    public override void StopButtonAnim()
+    {
+        transform.GetChild(1).GetComponent<Animator>().SetTrigger("stop");
+    }
 }

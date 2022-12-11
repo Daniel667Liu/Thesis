@@ -16,4 +16,7 @@ public abstract class Interaction : MonoBehaviour
     public abstract void HighlightObject();
 
     public abstract void StopHighlightObject();
+
+    public abstract void PlayButtonAnim();
+    public abstract void StopButtonAnim();
 }
