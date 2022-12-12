@@ -47,7 +47,7 @@ public class AssignInputManager : MonoBehaviour
             // UI drag and drop
             if (hoverObject != null)
             {
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButtonDown(0) && !(!panelTransform.GetChild(0).GetComponent<panelAnim>().isUp && hoverObject.transform.parent == panelTransform.GetChild(0)))
                 {
                     setCurrentBox(hoverObject);
                     hoverObject.GetComponent<Interaction>().HighlightObject();
@@ -77,10 +77,10 @@ public class AssignInputManager : MonoBehaviour
         box.transform.Rotate(-75f - box.transform.eulerAngles.x, 0f - box.transform.eulerAngles.y, 0f, Space.Self);
         box.transform.SetParent(panelTransform, true);
         Vector3 localPos = box.transform.localPosition;
-        box.transform.localPosition = new Vector3(localPos.x, 0.5f, localPos.z);
+        box.transform.localPosition = new Vector3(localPos.x, 0.9f, localPos.z);
         box.transform.localEulerAngles = Vector3.zero;
         
-
+        
         currentBox = box;
         currentZ = Camera.main.WorldToScreenPoint(box.transform.position).z;
         localZ = box.transform.localPosition.y;
@@ -100,8 +100,8 @@ public class AssignInputManager : MonoBehaviour
 
     private void moveCurrentBox()
     {
-        Vector3 newPos = GetMouseWorldPos() - currentOffset;
-        //Vector3 newPos = GetMouseWorldPos();
+        //Vector3 newPos = GetMouseWorldPos() - currentOffset;
+        Vector3 newPos = GetMouseWorldPos();
         currentBox.transform.position = newPos;
         //Vector3 mouseWP = GetMouseWorldPos();
         //currentBox.transform.position = new Vector3(mouseWP.x, mouseWP.y, 0f);
@@ -109,9 +109,9 @@ public class AssignInputManager : MonoBehaviour
         Vector3 localAdjust = currentBox.transform.localPosition;
         //currentBox.transform.localPosition = new Vector3(localAdjust.x, localZ, localAdjust.z);
         //currentBox.transform.localPosition = new Vector3(localAdjust.x, localAdjust.y, localZ);
+        
 
-
-        Ray r = new Ray(currentBox.transform.position, Vector3.forward);
+        Ray r = new Ray(currentBox.transform.position, Camera.main.transform.forward);
         float d;
         plane.Raycast(r, out d);
         Debug.Log("d: " + d);
@@ -159,7 +159,7 @@ public class AssignInputManager : MonoBehaviour
         }
 
         // success
-        if (keys.Count == currentBox.transform.GetChild(0).childCount)
+        if (keys.Count == currentBox.transform.GetChild(0).childCount && panelTransform.GetChild(0).GetComponent<panelAnim>().isUp)
         {
             // snap
             currentBox.transform.position -= offset;
@@ -181,6 +181,7 @@ public class AssignInputManager : MonoBehaviour
             updateColors();
             currentBox.GetComponent<Interaction>().PlayButtonAnim();
             currentBox.GetComponent<Interaction>().AssignKeys(keyCodes);
+            currentBox.transform.SetParent(panelTransform.GetChild(0), true);
             //snapped = true;
             return true;
         }
