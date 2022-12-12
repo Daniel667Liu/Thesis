@@ -10,9 +10,12 @@ public class StarAnim : MonoBehaviour
 
     private float caughtTimer;
 
+    private Animator anim;
+
     private void Start()
     {
         //kidAnim = GameObject.Find("Boy2D").GetComponent<KidAnim>();
+        anim = GetComponent<Animator>();
     }
 
     private void Update()
@@ -64,5 +67,15 @@ public class StarAnim : MonoBehaviour
         kidAnim.EatStar();
         Destroy(transform.parent.gameObject);
         kidAnim.isHandOccupied = false;
+    }
+
+    public void Star1FlyIn()
+    {
+        anim.Play("star1_come");
+    }
+
+    public void Star2Destroy()
+    {
+        Destroy(transform.parent.gameObject);
     }
 }
