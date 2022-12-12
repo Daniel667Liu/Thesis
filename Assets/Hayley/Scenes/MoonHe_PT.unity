@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 52bf027e28ebd6140968e9eca3db527b, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17422596, g: 0.21787864, b: 0.3000882, a: 1}
+  m_IndirectSpecularColor: {r: 0.014442466, g: 0.02731327, b: 0.038177297, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -633,6 +633,7 @@ MonoBehaviour:
   keyLayer:
     serializedVersion: 2
     m_Bits: 128
+  panelTransform: {fileID: 0}
   keyMats:
   - key: none
     mat: {fileID: 2100000, guid: a7c25137918b7a546b57bb055a909c54, type: 2}
@@ -5993,6 +5994,7 @@ MonoBehaviour:
   dropHandClip: boy_reverse
   eatLollipopClip: boy_eat_lollipop_anim
   eatStarClip: boy_eat_star
+  startFloatClip: 
   TwoDParent: {fileID: 1399618768}
   ThreeDParent: {fileID: 6249907259955841071}
   highlightMat: {fileID: 2100000, guid: c8db9e76aa9c2ba46ac37c0798a28d75, type: 2}
@@ -7155,6 +7157,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: house2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4bc6f50626bb7fb43bcc1e74b021879d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4bc6f50626bb7fb43bcc1e74b021879d, type: 3}
@@ -9838,6 +9845,7 @@ MonoBehaviour:
   keyLayer:
     serializedVersion: 2
     m_Bits: 128
+  panelTransform: {fileID: 0}
   keyMats: []
 --- !u!1 &910362397
 GameObject:
@@ -10723,6 +10731,7 @@ MonoBehaviour:
   dropHandClip: 
   eatLollipopClip: 
   eatStarClip: 
+  startFloatClip: 
   TwoDParent: {fileID: 0}
   ThreeDParent: {fileID: 0}
   highlightMat: {fileID: 0}
@@ -15919,6 +15928,7 @@ MonoBehaviour:
   keyLayer:
     serializedVersion: 2
     m_Bits: 128
+  panelTransform: {fileID: 0}
   keyMats: []
 --- !u!1 &1378711045
 GameObject:
@@ -16235,6 +16245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isHandUp: 0
   isHandOccupied: 0
+  isCharging: 0
 --- !u!114 &1399618775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32065,7 +32076,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4184180996751243080
 Transform:
   m_ObjectHideFlags: 0
