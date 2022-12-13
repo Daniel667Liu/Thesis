@@ -8,6 +8,7 @@ public struct SoundEffect
 {
     public AudioClip clip;
     public float volume;
+    public float attraction;
 }
 
 public class SoundEffectManager : MonoBehaviour
@@ -62,7 +63,7 @@ public class SoundEffectManager : MonoBehaviour
                 if (Services.audienceManager.audiences[data.soundIndex] != null) 
                 {
                     Services.audienceManager.audiences[data.soundIndex].Invoke("GiveFeedback", 0.5f);
-                    
+                    Services.audienceManager.attraction += soundEffects[data.soundIndex].attraction;
                 }
                 break;
             case 1://hold
@@ -71,6 +72,7 @@ public class SoundEffectManager : MonoBehaviour
                 if (Services.audienceManager.audiences[data.soundIndex] != null)
                 {
                     Services.audienceManager.audiences[data.soundIndex].Invoke("GiveFeedback", 0.5f);
+                    Services.audienceManager.attraction += soundEffects[data.soundIndex].attraction;
                 }
                 break;
             default:

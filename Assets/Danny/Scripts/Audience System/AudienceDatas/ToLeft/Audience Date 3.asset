@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2485dee4818fa24f98e973d9e50a75a, type: 3}
-  m_Name: Audience Date
+  m_Name: Audience Date 3
   m_EditorClassIdentifier: 
-  movingSpeed: 0.5
-  gatherThres: 5
-  leaveThres: 5
-  textFeedback: Tree is good
-  offset: {x: 0.5, y: -0.25}
+  movingSpeed: 0.3
+  gatherThres: 1
+  leaveThres: 0.5
+  textFeedback: vocalno is good
+  offset: {x: 0, y: 0}
   isFacingLeft: 1
-  walkingSpeed: 25
-  interactionPrefer: 0
+  walkingSpeed: 19
+  interactionPrefer: 2
