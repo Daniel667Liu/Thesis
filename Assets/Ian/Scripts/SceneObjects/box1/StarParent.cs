@@ -18,6 +18,8 @@ public class StarParent : MonoBehaviour
 
     public void ShootStar()
     {
+        if (stars[0] == null && stars[1] == null && stars[2] == null) return;
+
         if (stars[nextStarInd] == null)
         {
             nextStarInd++;

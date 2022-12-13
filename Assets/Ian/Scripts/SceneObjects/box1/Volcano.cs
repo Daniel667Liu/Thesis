@@ -38,7 +38,7 @@ public class Volcano : SceneObject
         {
             // boom the currentFirework
             currentFirework.GetComponent<Animator>().speed = 0f;
-            currentFirework.transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("boom");
+            currentFirework.GetComponent<FireworkAnim>().Boom();
 
             currentFirework = null;
 
@@ -97,4 +97,6 @@ public class Volcano : SceneObject
         ThreeDParent.SetActive(true);
         TwoDParent.SetActive(false);
     }
+
+    
 }

@@ -34,6 +34,10 @@ public class StarAnim : MonoBehaviour
                 Eaten();
             }
         }
+
+
+
+
     }
 
     public void FinishedLoop()
@@ -77,5 +81,33 @@ public class StarAnim : MonoBehaviour
     public void Star2Destroy()
     {
         Destroy(transform.parent.gameObject);
+    }
+
+    public void FollowBoyHitBox(GameObject boyHitBox, int starNum)
+    {
+        anim.enabled = false;
+        StartCoroutine(followObject(boyHitBox, starNum));
+    }
+
+    IEnumerator followObject(GameObject target, int starNum)
+    {
+        while (Vector2.Distance(transform.position, target.transform.position) > 0.05f)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, 5f * Time.deltaTime);
+            yield return new WaitForEndOfFrame();
+        }
+        // reached object
+        if (starNum == 2)
+        {
+            target.transform.parent.GetComponent<KidAnim>().RideStar(2);
+            anim.enabled = true;
+            anim.Play("star2_come");
+        }
+        else
+        {
+            target.transform.parent.GetComponent<KidAnim>().RideStar(3);
+            //Destroy(transform.parent.gameObject);
+            transform.parent.gameObject.SetActive(false);
+        }
     }
 }

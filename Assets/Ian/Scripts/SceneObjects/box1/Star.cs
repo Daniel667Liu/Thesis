@@ -49,14 +49,16 @@ public class Star : SceneObject
     {
         //TODO
         Debug.Log("highlighted");
-        ThreeDParent.GetComponent<MeshRenderer>().material = highlightMat;
+        if (ThreeDParent != null)
+            ThreeDParent.GetComponent<MeshRenderer>().material = highlightMat;
     }
 
     public override void StopHighlight()
     {
         //TODO
         Debug.Log("stopped highlight");
-        ThreeDParent.GetComponent<MeshRenderer>().material = defaultMat;
+        if (ThreeDParent != null)
+            ThreeDParent.GetComponent<MeshRenderer>().material = defaultMat;
     }
 
     public override void StartedLoop()
