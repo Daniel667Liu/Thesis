@@ -7,6 +7,7 @@ public class GirlAnim : MonoBehaviour
     public float threshold;
     public GameObject star1CP;
     public GameObject star2CP;
+    public GameObject girlBoom;
 
     private Animator anim;
 
@@ -51,5 +52,18 @@ public class GirlAnim : MonoBehaviour
             star2.GetComponent<StarAnim>().Star2Destroy();
             anim.Play("girl_ridingstar1");
         }
+    }
+
+    public void Boom()
+    {
+        anim.enabled = false;
+        Vector3 pos = transform.GetChild(2).position;
+        Instantiate(girlBoom, pos, Quaternion.identity);
+        DestroySelf();
+    }
+
+    public void DestroySelf()
+    {
+        Destroy(this.gameObject);
     }
 }
