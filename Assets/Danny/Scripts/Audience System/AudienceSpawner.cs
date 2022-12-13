@@ -30,7 +30,7 @@ public class AudienceSpawner : MonoBehaviour
     public void SpawnAudience() 
     {
         
-        Audience clone = Instantiate(audiencePrefab, transform.position, Quaternion.identity);
+        Audience clone = Instantiate(audiencePrefab, transform.position+new Vector3(0,0,Random.Range(-5f,5f)), Quaternion.identity);
         clone.data = audienceDatas[audienceIndex];
         clone.box = box;
         Services.audienceManager.audiences[clone.data.interactionPrefer] = clone;

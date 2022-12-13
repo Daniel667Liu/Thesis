@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Audience Date 0
   m_EditorClassIdentifier: 
   movingSpeed: 0.5
-  gatherThres: 5
-  leaveThres: 5
+  gatherThres: 3
+  leaveThres: 3
   textFeedback: Tree is good
   offset: {x: 0.5, y: -0.25}
   isFacingLeft: 1
