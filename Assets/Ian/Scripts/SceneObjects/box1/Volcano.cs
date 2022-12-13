@@ -11,7 +11,7 @@ public class Volcano : SceneObject
     public Material highlightMat;
     private Material defaultMat;
 
-    public string currentAmmo;
+    public List<string> currentAmmos;
     public GameObject fireworkPrefab;
     public GameObject pineappleCloudPrefab;
 
@@ -57,15 +57,24 @@ public class Volcano : SceneObject
 
     public void ShootObj()
     {
-        if (currentAmmo.Length == 0)
+        if (currentAmmos.Count == 0)
         {
             // shoot firework
             currentFirework = Instantiate(fireworkPrefab);
         }
-        else if (currentAmmo.Equals("pineapple"))
+        else
         {
-            Instantiate(pineappleCloudPrefab);
-            currentAmmo = "";
+            string currentAmmo = currentAmmos[0];
+            if (currentAmmo.Equals("pineapple"))
+            {
+                Instantiate(pineappleCloudPrefab);
+            }
+            else if (currentAmmo.Equals("star"))
+            {
+                // star thing
+            }
+
+            currentAmmos.RemoveAt(0);
         }
     }
 

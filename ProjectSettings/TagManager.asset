@@ -7,6 +7,10 @@ TagManager:
   - girlHitBox
   - boyHitBox
   - AudienceKiller
+  - star2D
+  - moon
+  - volcano
+  - desk
   layers:
   - Default
   - TransparentFX

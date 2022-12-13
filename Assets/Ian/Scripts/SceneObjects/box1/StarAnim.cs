@@ -12,6 +12,9 @@ public class StarAnim : MonoBehaviour
 
     private Animator anim;
 
+    private bool hitGround;
+    private bool hitVolcano;
+
     private void Start()
     {
         //kidAnim = GameObject.Find("Boy2D").GetComponent<KidAnim>();
@@ -108,6 +111,48 @@ public class StarAnim : MonoBehaviour
             target.transform.parent.GetComponent<KidAnim>().RideStar(3);
             //Destroy(transform.parent.gameObject);
             transform.parent.gameObject.SetActive(false);
+        }
+    }
+
+    public void HitByFirework()
+    {
+        if (anim.enabled == false) return;
+
+        anim.enabled = false;
+        transform.GetChild(0).GetComponent<Animator>().SetTrigger("fall");
+
+        StartCoroutine(DropDown());
+    }
+
+    IEnumerator DropDown()
+    {
+
+        while (!hitGround && !hitVolcano)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, transform.position - Vector3.up, 8f * Time.deltaTime);
+            yield return new WaitForEndOfFrame();
+        }
+
+        if (hitGround)
+        {
+            transform.GetChild(0).GetComponent<Animator>().SetTrigger("disappear");
+        }
+        if (hitVolcano)
+        {
+            GameObject.Find("Volcano").GetComponent<Volcano>().currentAmmos.Add("star");
+            transform.parent.gameObject.SetActive(false);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if ((other.tag == "moon" || other.tag == "desk") && !hitVolcano)
+        {
+            hitGround = true;
+        }
+        if (other.tag == "volcano" && !hitGround)
+        {
+            hitVolcano = true;
         }
     }
 }

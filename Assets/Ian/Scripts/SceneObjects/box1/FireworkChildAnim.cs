@@ -28,6 +28,16 @@ public class FireworkChildAnim : MonoBehaviour
             }
         }
 
+        // look for stars
+        GameObject[] star2Ds = GameObject.FindGameObjectsWithTag("star2D");
+        foreach (GameObject star2D in star2Ds)
+        {
+            if (Vector2.Distance(star2D.transform.position, transform.position) < 1.8f && star2D.activeSelf == true)
+            {
+                star2D.GetComponent<StarAnim>().HitByFirework();
+            }
+        }
+
         //TODO: other hits
     }
 }

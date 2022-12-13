@@ -7,7 +7,7 @@ public class PineappleAnim : MonoBehaviour
     
     public void LoadVolcanoAndDestroySelf()
     {
-        GameObject.Find("Volcano").GetComponent<Volcano>().currentAmmo = "pineapple";
+        GameObject.Find("Volcano").GetComponent<Volcano>().currentAmmos.Add("pineapple");
         Destroy(this.gameObject, 1f);
     }
 

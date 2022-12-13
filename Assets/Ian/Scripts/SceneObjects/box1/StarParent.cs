@@ -22,7 +22,11 @@ public class StarParent : MonoBehaviour
             (stars[1] == null || stars[1].gameObject.activeSelf == false) && 
             (stars[2] == null || stars[2].gameObject.activeSelf == false)) return;
 
-        while (stars[nextStarInd] == null || stars[nextStarInd].gameObject.activeSelf == false)
+        if (stars[0].transform.GetChild(1).GetComponent<Animator>().enabled == false &&
+            stars[1].transform.GetChild(1).GetComponent<Animator>().enabled == false &&
+            stars[2].transform.GetChild(1).GetComponent<Animator>().enabled == false) return;
+        
+        while (stars[nextStarInd] == null || stars[nextStarInd].gameObject.activeSelf == false || stars[nextStarInd].transform.GetChild(1).GetComponent<Animator>().enabled == false)
         {
             nextStarInd++;
             if (nextStarInd >= stars.Count)
@@ -30,14 +34,15 @@ public class StarParent : MonoBehaviour
                 nextStarInd = 0;
             }
         }
-        if (stars[nextStarInd].GetComponent<Star>().ShootStar())
-        {
+        //if (stars[nextStarInd].GetComponent<Star>().ShootStar())
+        //{
+        stars[nextStarInd].GetComponent<Star>().ShootStar();
             nextStarInd++;
             if (nextStarInd >= stars.Count)
             {
                 nextStarInd = 0;
             }
-        }
+        //}
     }
 
     public void Highlight()

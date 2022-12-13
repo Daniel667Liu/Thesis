@@ -8,7 +8,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Ian/Scenes/MoonHe_PT.unity
     guid: 923e00a75539f654da1afa2aa58f743c
-  - enabled: 0
-    path: Assets/Ian/Scenes/PerformTest.unity
-    guid: 4ab19731f6aad974e8d34834645f7860
   m_configObjects: {}
