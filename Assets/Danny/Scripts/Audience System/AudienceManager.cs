@@ -16,6 +16,13 @@ public class AudienceManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.UpArrow)) 
+        {
+            attraction += 1;
+        }
+        if (attraction > 0f) 
+        {
+            attraction -= Time.deltaTime * 0.5f;
+        }
     }
 }

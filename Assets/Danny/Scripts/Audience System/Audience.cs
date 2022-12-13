@@ -30,6 +30,7 @@ public class Audience : MonoBehaviour
         currentState.EnterState(this);
         tmPro.text = " ";
         CalDesPos();
+       
     }
 
     // Update is called once per frame
@@ -81,11 +82,13 @@ public class Audience : MonoBehaviour
     public void MovingToBox()
     {
         Vector3 translation = transform.position - desPos;
-        transform.Translate(translation * Time.deltaTime*data.movingSpeed , Space.World);
+        transform.Translate(translation * Time.deltaTime*data.movingSpeed *-1f, Space.World);
+        Debug.Log("moving to box");
     }
 
     public void NormalWalking()
     {
+        
         Vector3 pos = transform.position;
 
         if (data.isFacingLeft)
@@ -96,12 +99,21 @@ public class Audience : MonoBehaviour
         {
             pos.x -= data.walkingSpeed * Time.deltaTime;
         }
+        transform.position = pos;
     }
 
     public void Leaving() 
     {
         Vector3 translation = transform.position - desPos;
-        transform.Translate(translation * Time.deltaTime * data.movingSpeed*-1f, Space.World);
+        transform.Translate(translation * Time.deltaTime * data.movingSpeed, Space.World);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("AudienceKiller")) 
+        {
+            Destroy(this.gameObject);
+        }
     }
 
 }

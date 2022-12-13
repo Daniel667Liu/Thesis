@@ -6,6 +6,7 @@ TagManager:
   tags:
   - girlHitBox
   - boyHitBox
+  - AudienceKiller
   layers:
   - Default
   - TransparentFX
