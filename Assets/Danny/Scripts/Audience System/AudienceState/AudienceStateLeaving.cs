@@ -11,15 +11,16 @@ public class AudienceStateLeaving : AudienceStateBase
     public override void UpdateState(Audience audience)
     {
        
-        if (audience.distance < audience.manager.gatherDistance + Random.Range(-1f, 1f))
+        if (audience.distance > audience.iniDistance*0.69f+Random.Range(-1f,5f))
         {
             //leave the box pos
-            audience.Leaving();
+            
+            audience.ToWalkState();
         }
         else
         {
             //stop movement
-            audience.ToWalkState();
+            audience.Leaving();
         }
     }
 

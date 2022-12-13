@@ -15,7 +15,8 @@ MonoBehaviour:
   movingSpeed: 0.3
   gatherThres: 5
   leaveThres: 3
-  textFeedback: 
+  textFeedback: hand is good
   offset: {x: 0.05, y: 0}
   isFacingLeft: 1
   walkingSpeed: 0.5
+  interactionPrefer: 1

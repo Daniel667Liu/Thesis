@@ -10,7 +10,7 @@ public class AudienceStateWatching : AudienceStateBase
     }
     public override void UpdateState(Audience audience)
     {
-        if (audience.manager.attraction < audience.data.leaveThres) 
+        if (Services.audienceManager.attraction < audience.data.leaveThres) 
         {
             audience.ToLeaveState();
         }

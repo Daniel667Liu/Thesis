@@ -9,4 +9,5 @@ public static class Services
     public static LiveFeedbackManager liveFeedbackManager;
     public static PerformanceManager performanceManager;
     public static AudienceExpectation audienceExpectation;
+    public static AudienceManager audienceManager;
 }

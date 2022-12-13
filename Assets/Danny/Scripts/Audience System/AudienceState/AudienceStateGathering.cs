@@ -11,7 +11,7 @@ public class AudienceStateGathering : AudienceStateBase
     public override void UpdateState(Audience audience)
     {
         //check if arrived the spot, if so then stop the animation and movement
-        if (audience.distance > audience.manager.gatherDistance+Random.Range(-1f,1f))
+        if (audience.distance > Services.audienceManager.gatherDistance+Random.Range(-1f,1f))
         {
             //move to the box
             audience.MovingToBox();

@@ -26,4 +26,7 @@ public class AudienceData : ScriptableObject
     public bool isFacingLeft;
 
     public float walkingSpeed = 2f;
+
+    [Tooltip("preferred interaction trigger id")]
+    public int interactionPrefer = 0;
 }

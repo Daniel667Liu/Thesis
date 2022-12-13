@@ -59,10 +59,19 @@ public class SoundEffectManager : MonoBehaviour
         {
             case 0://trigger
                 audioSources[data.soundIndex].PlayOneShot(soundEffects[data.soundIndex].clip);
+                if (Services.audienceManager.audiences[data.soundIndex] != null) 
+                {
+                    Services.audienceManager.audiences[data.soundIndex].Invoke("GiveFeedback", 0.5f);
+                    
+                }
                 break;
             case 1://hold
                 audioSources[data.soundIndex].clip = soundEffects[data.soundIndex].clip;
                 audioSources[data.soundIndex].Play();
+                if (Services.audienceManager.audiences[data.soundIndex] != null)
+                {
+                    Services.audienceManager.audiences[data.soundIndex].Invoke("GiveFeedback", 0.5f);
+                }
                 break;
             default:
                 Debug.LogWarning("audio " + data.soundIndex + " play mode out of switch!");

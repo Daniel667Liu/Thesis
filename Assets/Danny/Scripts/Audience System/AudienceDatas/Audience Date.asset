@@ -15,7 +15,8 @@ MonoBehaviour:
   movingSpeed: 0.5
   gatherThres: 5
   leaveThres: 5
-  textFeedback: 
+  textFeedback: Tree is good
   offset: {x: 0.5, y: -0.25}
   isFacingLeft: 1
   walkingSpeed: 25
+  interactionPrefer: 0

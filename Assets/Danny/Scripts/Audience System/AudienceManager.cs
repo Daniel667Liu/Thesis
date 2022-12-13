@@ -6,11 +6,17 @@ public class AudienceManager : MonoBehaviour
 {
     public float attraction = 0f;
     public float gatherDistance = 10f;
-
+    public int interactionCount = 32;
+    public List<Audience> audiences;
     // Start is called before the first frame update
     void Start()
     {
-        
+        Services.audienceManager = this;
+        audiences = new List<Audience>();
+        for (int i = 0; i < interactionCount; i++)
+        {
+            audiences.Add(null);
+        }
     }
 
     // Update is called once per frame
@@ -22,7 +28,7 @@ public class AudienceManager : MonoBehaviour
         }
         if (attraction > 0f) 
         {
-            attraction -= Time.deltaTime * 0.5f;
+            attraction -= Time.deltaTime ;
         }
     }
 }

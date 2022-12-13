@@ -7,11 +7,12 @@ public class AudienceSpawner : MonoBehaviour
     public Audience audiencePrefab;
     public List<AudienceData> audienceDatas;
     public GameObject box;
+    //AudienceManager manager;
     int audienceIndex = 0;
     // Start is called before the first frame update
     void Start()
     {
-        
+        //manager = FindObjectOfType<AudienceManager>();
     }
 
     // Update is called once per frame
@@ -29,13 +30,16 @@ public class AudienceSpawner : MonoBehaviour
         Audience clone = Instantiate(audiencePrefab, transform.position, Quaternion.identity);
         clone.data = audienceDatas[audienceIndex];
         clone.box = box;
+        Services.audienceManager.audiences[clone.data.interactionPrefer] = clone;
         if (audienceIndex < audienceDatas.Count - 1) 
         {
             audienceIndex += 1;
         }
-        if (audienceIndex == audienceDatas.Count - 1) 
+        else if (audienceIndex == audienceDatas.Count - 1) 
         {
             audienceIndex = 0;
         }
     }
+
+    
 }

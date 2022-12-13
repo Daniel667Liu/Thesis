@@ -9,28 +9,32 @@ public class Audience : MonoBehaviour
     [HideInInspector]
     public Animator animator;
     public TextMeshPro tmPro;
-    [HideInInspector]
-    public AudienceManager manager;
+    //[HideInInspector]
+    //public AudienceManager manager;
     public GameObject box;
     [HideInInspector]
-    public float distance;
-   
+    public float distance = 30;
+    [HideInInspector] public float iniDistance;
     Vector3 desPos;
     AudienceStateBase currentState;
     AudienceStateWalking walkState = new AudienceStateWalking();
     AudienceStateWatching watchState = new AudienceStateWatching();
     AudienceStateGathering gatherState = new AudienceStateGathering();
     AudienceStateLeaving leaveState = new AudienceStateLeaving();
-    // Start is called before the first frame update
+    AudienceStateClapping clapState = new AudienceStateClapping();
+
+    
     void Start()
     {
-        manager = FindObjectOfType<AudienceManager>();
+        //manager = FindObjectOfType<AudienceManager>();
         animator = GetComponent<Animator>();
         currentState = walkState;
         currentState.EnterState(this);
         tmPro.text = " ";
         CalDesPos();
-       
+        CalDistance();
+        iniDistance = (transform.position - box.transform.position).magnitude;
+
     }
 
     // Update is called once per frame
@@ -71,7 +75,8 @@ public class Audience : MonoBehaviour
 
     void CalDistance() 
     {
-        distance = Mathf.Abs(transform.position.z - box.transform.position.z);
+        distance = (transform.position - box.transform.position).magnitude;
+        
     }
 
     void CalDesPos() 
@@ -97,14 +102,17 @@ public class Audience : MonoBehaviour
         }
         else 
         {
-            pos.x -= data.walkingSpeed * Time.deltaTime;
+            pos.x = data.walkingSpeed * Time.deltaTime;
         }
         transform.position = pos;
     }
 
     public void Leaving() 
     {
+      
         Vector3 translation = transform.position - desPos;
+        translation.x = 0;
+        translation.y = 0;
         transform.Translate(translation * Time.deltaTime * data.movingSpeed, Space.World);
     }
 
@@ -112,8 +120,23 @@ public class Audience : MonoBehaviour
     {
         if (other.gameObject.CompareTag("AudienceKiller")) 
         {
+            Services.audienceManager.audiences[data.interactionPrefer] = null;
             Destroy(this.gameObject);
         }
     }
 
+    public void GiveFeedback() 
+    {
+        tmPro.text = data.textFeedback;
+        if (currentState == watchState) 
+        {
+            TransitState(clapState);
+        }
+        Invoke("ClearFeedback", 5f);
+    }
+
+    void ClearFeedback() 
+    {
+        tmPro.text = "";
+    }
 }
