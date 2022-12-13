@@ -18,5 +18,5 @@ MonoBehaviour:
   textFeedback: vocalno is good
   offset: {x: 0, y: 0}
   isFacingLeft: 1
-  walkingSpeed: 3
+  walkingSpeed: 19
   interactionPrefer: 2
