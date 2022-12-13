@@ -6,7 +6,7 @@ public class StarParent : MonoBehaviour
 {
     public List<Star> stars = new List<Star>();
 
-    private int nextStarInd;
+    public int nextStarInd;
 
     private void Start()
     {
@@ -18,9 +18,11 @@ public class StarParent : MonoBehaviour
 
     public void ShootStar()
     {
-        if (stars[0] == null && stars[1] == null && stars[2] == null) return;
+        if ((stars[0] == null || stars[0].gameObject.activeSelf == false) && 
+            (stars[1] == null || stars[1].gameObject.activeSelf == false) && 
+            (stars[2] == null || stars[2].gameObject.activeSelf == false)) return;
 
-        if (stars[nextStarInd] == null)
+        while (stars[nextStarInd] == null || stars[nextStarInd].gameObject.activeSelf == false)
         {
             nextStarInd++;
             if (nextStarInd >= stars.Count)

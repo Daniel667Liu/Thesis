@@ -129,6 +129,10 @@ public class AppleTree : SceneObject
             {
                 Instantiate(lolipopWithoutChild);
             }
+            else
+            {
+                Instantiate(FallObjects[currentObjectIndex]);
+            }
         }
         else
         {
