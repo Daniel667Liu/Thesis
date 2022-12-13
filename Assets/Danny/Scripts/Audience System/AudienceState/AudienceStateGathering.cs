@@ -14,6 +14,7 @@ public class AudienceStateGathering : AudienceStateBase
         if (audience.distance > audience.manager.gatherDistance+Random.Range(-1f,1f))
         {
             //move to the box
+            audience.MovingToBox();
         }
         else 
         {

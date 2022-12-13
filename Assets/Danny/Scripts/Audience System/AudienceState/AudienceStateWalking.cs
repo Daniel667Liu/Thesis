@@ -11,16 +11,21 @@ public class AudienceStateWalking : AudienceStateBase
     public override void UpdateState(Audience audience)
     {
         //check if should gather then change the state
-        if (audience.manager.attraction >= audience.data.gatherThres) 
+        if (audience.manager.attraction >= audience.data.gatherThres)
         {
             if (audience.distance > audience.manager.gatherDistance)
             {
                 audience.ToGatherState();
             }
-            else 
+            else
             {
                 audience.ToWatchState();
             }
+        }
+        else 
+        {
+            //do normal walking
+            audience.NormalWalking();
         }
     }
 
