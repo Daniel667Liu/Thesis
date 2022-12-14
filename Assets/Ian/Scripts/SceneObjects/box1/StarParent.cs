@@ -18,13 +18,13 @@ public class StarParent : MonoBehaviour
 
     public void ShootStar()
     {
-        if ((stars[0] == null || stars[0].gameObject.activeSelf == false) && 
-            (stars[1] == null || stars[1].gameObject.activeSelf == false) && 
-            (stars[2] == null || stars[2].gameObject.activeSelf == false)) return;
+        if ((stars[0] == null || stars[0].gameObject.activeSelf == false || stars[0].transform.GetChild(1).GetComponent<Animator>().enabled == false) && 
+            (stars[1] == null || stars[1].gameObject.activeSelf == false || stars[1].transform.GetChild(1).GetComponent<Animator>().enabled == false) && 
+            (stars[2] == null || stars[2].gameObject.activeSelf == false || stars[2].transform.GetChild(1).GetComponent<Animator>().enabled == false)) return;
 
-        if (stars[0].transform.GetChild(1).GetComponent<Animator>().enabled == false &&
-            stars[1].transform.GetChild(1).GetComponent<Animator>().enabled == false &&
-            stars[2].transform.GetChild(1).GetComponent<Animator>().enabled == false) return;
+        /*if ((stars[0] != null && stars[0].transform.GetChild(1).GetComponent<Animator>().enabled == false) &&
+            (stars[1] != null && stars[1].transform.GetChild(1).GetComponent<Animator>().enabled == false) &&
+            (stars[2] != null && stars[2].transform.GetChild(1).GetComponent<Animator>().enabled == false)) return;*/
         
         while (stars[nextStarInd] == null || stars[nextStarInd].gameObject.activeSelf == false || stars[nextStarInd].transform.GetChild(1).GetComponent<Animator>().enabled == false)
         {
