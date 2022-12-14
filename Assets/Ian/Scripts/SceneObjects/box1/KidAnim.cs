@@ -122,11 +122,6 @@ public class KidAnim : MonoBehaviour
         transform.parent.GetComponent<Animator>().speed = 1f;
     }
 
-    public void Arrived()
-    {
-        waiting = true;
-    }
-
     IEnumerator flyToWait()
     {
         float timer = 0f;
@@ -152,8 +147,10 @@ public class KidAnim : MonoBehaviour
         }
 
         // reached wait position
-        waiting = true;
+        transform.parent.transform.localPosition = Vector3.zero;
+        anim.enabled = true;
         anim.Play("boy_waiting");
+        waiting = true;
     }
 
     IEnumerator flyAway()
@@ -183,6 +180,7 @@ public class KidAnim : MonoBehaviour
 
     public void Leave()
     {
+        anim.enabled = true;
         anim.SetTrigger("leave");
     }
 

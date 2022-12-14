@@ -10,23 +10,39 @@ public class AudienceStateWalking : AudienceStateBase
     }
     public override void UpdateState(Audience audience)
     {
-        //check if should gather then change the state
-        if (Services.audienceManager.attraction > audience.data.gatherThres)
+        if (audience.startCheck)
         {
-            if (audience.distance > Services.audienceManager.gatherDistance)
+            if (Services.audienceManager.attraction > audience.data.gatherThres)
             {
-                audience.ToGatherState();
+
+                if (!audience.isWatched)
+                {
+                    if (audience.distance > Services.audienceManager.gatherDistance)
+                    {
+                        audience.ToGatherState();
+                    }
+                    if (audience.distance <= Services.audienceManager.gatherDistance)
+                    {
+                        audience.ToWatchState();
+                    }
+                }
+
+
+
             }
-            if(audience.distance <= Services.audienceManager.gatherDistance)
+            else
             {
-                audience.ToWatchState();
+                //do normal walking
+                audience.NormalWalking();
             }
         }
         else 
         {
-            //do normal walking
             audience.NormalWalking();
+
         }
+        //check if should gather then change the state
+        
     }
 
     public override void ExitState(Audience audience)

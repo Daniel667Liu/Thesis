@@ -17,7 +17,7 @@ public class SoundEffectManager : MonoBehaviour
     //public List<AudioClip> sounds;
     [HideInInspector] public List<AudioSource> audioSources;
     public List<SoundEffect> soundEffects = new List<SoundEffect>();
-    
+    public Queue<int> recentEffect;
     
     // Start is called before the first frame update
     private void Awake()
@@ -28,7 +28,9 @@ public class SoundEffectManager : MonoBehaviour
         {
             audioSources.Add(null);
         }
-
+        recentEffect = new Queue<int>();
+        recentEffect.Enqueue(-1);
+        recentEffect.Enqueue(-1);
     }
     void Start()
     {
@@ -60,7 +62,13 @@ public class SoundEffectManager : MonoBehaviour
         {
             case 0://trigger
                 audioSources[data.soundIndex].PlayOneShot(soundEffects[data.soundIndex].clip);
-                Services.audienceManager.attraction += soundEffects[data.soundIndex].attraction;
+                if (!(recentEffect.Contains(data.soundIndex))) 
+                {
+                    Services.audienceManager.attraction += soundEffects[data.soundIndex].attraction;
+                    recentEffect.Dequeue();
+                    recentEffect.Enqueue(data.soundIndex);
+                }
+                
 
                 if (Services.audienceManager.audiences[data.soundIndex] != null) 
                 {
@@ -70,11 +78,20 @@ public class SoundEffectManager : MonoBehaviour
             case 1://hold
                 audioSources[data.soundIndex].clip = soundEffects[data.soundIndex].clip;
                 audioSources[data.soundIndex].Play();
-                Services.audienceManager.attraction += soundEffects[data.soundIndex].attraction;
+
+                if (!(recentEffect.Contains(data.soundIndex))) 
+                {
+                    Services.audienceManager.attraction += soundEffects[data.soundIndex].attraction;
+                    recentEffect.Dequeue();
+                    recentEffect.Enqueue(data.soundIndex);
+                }
                 if (Services.audienceManager.audiences[data.soundIndex] != null)
                 {
-                    Services.audienceManager.audiences[data.soundIndex].Invoke("GiveFeedback", 0.5f);
-                    
+                    if (!(recentEffect.Contains(data.soundIndex))) 
+                    {
+                        Services.audienceManager.audiences[data.soundIndex].Invoke("GiveFeedback", 0.5f);
+                    }
+
                 }
                 break;
             default:

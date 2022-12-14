@@ -30,5 +30,7 @@ public class AudienceManager : MonoBehaviour
         {
             attraction -= Time.deltaTime ;
         }
+
+        Debug.Log("attraction now:" + attraction);
     }
 }
