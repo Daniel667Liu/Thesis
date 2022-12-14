@@ -19,6 +19,8 @@ public class KidAnim : MonoBehaviour
 
     private bool attracted;
 
+    public bool waiting;
+
     private void Start()
     {
         sitAnchor = transform.GetChild(0).gameObject;
@@ -120,6 +122,11 @@ public class KidAnim : MonoBehaviour
         transform.parent.GetComponent<Animator>().speed = 1f;
     }
 
+    public void Arrived()
+    {
+        waiting = true;
+    }
+
     IEnumerator flyToWait()
     {
         float timer = 0f;
@@ -145,6 +152,8 @@ public class KidAnim : MonoBehaviour
         }
 
         // reached wait position
+        waiting = true;
+        anim.Play("boy_waiting");
     }
 
     IEnumerator flyAway()
@@ -170,8 +179,11 @@ public class KidAnim : MonoBehaviour
             timer += Time.deltaTime / 1.4f;
             yield return new WaitForEndOfFrame();
         }
+    }
 
-        // reached wait position
+    public void Leave()
+    {
+        anim.SetTrigger("leave");
     }
 
     private float quadEaseIn(float t) => t * t;
