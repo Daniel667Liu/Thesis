@@ -11,9 +11,28 @@ public class GirlAnim : MonoBehaviour
 
     private Animator anim;
 
+    private bool waiting;
+
+    private KidAnim ka;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
+        ka = GameObject.Find("Boy2D").GetComponent<KidAnim>();
+    }
+
+    private void Update()
+    {
+        if (waiting)
+        {
+            // check if boy came
+            if (ka.waiting)
+            {
+                // go together
+                ka.Leave();
+                anim.SetTrigger("leave");
+            }
+        }
     }
 
     public void CheckStar1()
@@ -65,5 +84,10 @@ public class GirlAnim : MonoBehaviour
     public void DestroySelf()
     {
         Destroy(this.gameObject);
+    }
+
+    public void Arrived()
+    {
+        waiting = true;
     }
 }
