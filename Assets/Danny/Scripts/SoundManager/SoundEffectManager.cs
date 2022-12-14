@@ -60,19 +60,21 @@ public class SoundEffectManager : MonoBehaviour
         {
             case 0://trigger
                 audioSources[data.soundIndex].PlayOneShot(soundEffects[data.soundIndex].clip);
+                Services.audienceManager.attraction += soundEffects[data.soundIndex].attraction;
+
                 if (Services.audienceManager.audiences[data.soundIndex] != null) 
                 {
                     Services.audienceManager.audiences[data.soundIndex].Invoke("GiveFeedback", 0.5f);
-                    Services.audienceManager.attraction += soundEffects[data.soundIndex].attraction;
                 }
                 break;
             case 1://hold
                 audioSources[data.soundIndex].clip = soundEffects[data.soundIndex].clip;
                 audioSources[data.soundIndex].Play();
+                Services.audienceManager.attraction += soundEffects[data.soundIndex].attraction;
                 if (Services.audienceManager.audiences[data.soundIndex] != null)
                 {
                     Services.audienceManager.audiences[data.soundIndex].Invoke("GiveFeedback", 0.5f);
-                    Services.audienceManager.attraction += soundEffects[data.soundIndex].attraction;
+                    
                 }
                 break;
             default:

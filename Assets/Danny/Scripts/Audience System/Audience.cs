@@ -16,6 +16,8 @@ public class Audience : MonoBehaviour
     public float distance = 30;
     [HideInInspector] public float iniDistance;
     Vector3 desPos;
+    float walkSpeed;
+    bool isGivenFeedback = false;
     AudienceStateBase currentState;
     AudienceStateWalking walkState = new AudienceStateWalking();
     AudienceStateWatching watchState = new AudienceStateWatching();
@@ -34,6 +36,7 @@ public class Audience : MonoBehaviour
         CalDesPos();
         CalDistance();
         iniDistance = (transform.position - box.transform.position).magnitude;
+        walkSpeed = Random.Range(10f, 25f);
 
     }
 
@@ -81,14 +84,14 @@ public class Audience : MonoBehaviour
 
     void CalDesPos() 
     {
-        desPos = box.transform.position + new Vector3(data.offset.x, 0, data.offset.y);
+        desPos = box.transform.position + new Vector3(Random.Range(-1f,1f), 0,Random.Range(-1f,1f));
     }
 
     public void MovingToBox()
     {
         Vector3 translation = transform.position - desPos;
         transform.Translate(translation * Time.deltaTime*data.movingSpeed *-1f, Space.World);
-        Debug.Log("moving to box");
+        //Debug.Log("moving to box");
     }
 
     public void NormalWalking()
@@ -98,11 +101,11 @@ public class Audience : MonoBehaviour
 
         if (data.isFacingLeft)
         {
-            pos.x -= data.walkingSpeed * Time.deltaTime;
+            pos.x -= walkSpeed * Time.deltaTime;
         }
         else 
         {
-            pos.x = data.walkingSpeed * Time.deltaTime;
+            pos.x = walkSpeed * Time.deltaTime;
         }
         transform.position = pos;
     }
@@ -127,12 +130,19 @@ public class Audience : MonoBehaviour
 
     public void GiveFeedback() 
     {
-        tmPro.text = data.textFeedback;
-        if (currentState == watchState) 
+        if (currentState == watchState)
         {
             TransitState(clapState);
         }
-        Invoke("ClearFeedback", 5f);
+        if (!isGivenFeedback) 
+        {
+            tmPro.text = data.textFeedback;
+            Invoke("ClearFeedback", 5f);
+            isGivenFeedback = true;
+        }
+        
+        
+        
     }
 
     void ClearFeedback() 

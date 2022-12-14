@@ -13,10 +13,8 @@ MonoBehaviour:
   m_Name: Audience Date 3
   m_EditorClassIdentifier: 
   movingSpeed: 0.3
-  gatherThres: 1
-  leaveThres: 0.5
-  textFeedback: vocalno is good
-  offset: {x: 0, y: 0}
+  gatherThres: 5
+  leaveThres: 5.5
+  textFeedback: '!!!!'
   isFacingLeft: 1
-  walkingSpeed: 19
-  interactionPrefer: 2
+  interactionPrefer: 3

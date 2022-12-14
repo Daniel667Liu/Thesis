@@ -30,7 +30,7 @@ public class AudienceSpawner : MonoBehaviour
     public void SpawnAudience() 
     {
         
-        Audience clone = Instantiate(audiencePrefab, transform.position+new Vector3(0,0,Random.Range(-5f,5f)), Quaternion.identity);
+        Audience clone = Instantiate(audiencePrefab, transform.position+new Vector3(Random.Range(-10f,10f),0,Random.Range(-10f,10f)), Quaternion.identity,transform);
         clone.data = audienceDatas[audienceIndex];
         clone.box = box;
         Services.audienceManager.audiences[clone.data.interactionPrefer] = clone;
@@ -48,8 +48,11 @@ public class AudienceSpawner : MonoBehaviour
     {
         while (true) 
         {
-            yield return new WaitForEndOfFrame();
-            SpawnAudience();
+            if (transform.childCount <= 31) 
+            {
+                yield return new WaitForEndOfFrame();
+                SpawnAudience();
+            }
             yield return new WaitForSeconds(Random.Range(gapTimeRange.x,gapTimeRange.y));
         }
         

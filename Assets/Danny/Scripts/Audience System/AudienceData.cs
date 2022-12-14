@@ -18,14 +18,10 @@ public class AudienceData : ScriptableObject
     //when trigger feedback , say the word
     public string textFeedback;
 
-    //for audience to calculate the destination position of gathering
-    [Tooltip("input xoffset and z offset for audience moving to the box")]
-    public Vector2 offset;
 
     [Tooltip("if the audience is facing the left")]
     public bool isFacingLeft;
 
-    public float walkingSpeed = 2f;
 
     [Tooltip("preferred interaction trigger id")]
     public int interactionPrefer = 0;

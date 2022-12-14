@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2485dee4818fa24f98e973d9e50a75a, type: 3}
-  m_Name: Audience Date 2
+  m_Name: Audience Date 10
   m_EditorClassIdentifier: 
   movingSpeed: 0.3
-  gatherThres: 1
-  leaveThres: 0.5
-  textFeedback: Where is the larva?
+  gatherThres: 7
+  leaveThres: 8.5
+  textFeedback: 
   isFacingLeft: 1
-  interactionPrefer: 2
+  interactionPrefer: 10
