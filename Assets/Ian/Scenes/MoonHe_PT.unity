@@ -16494,6 +16494,7 @@ MonoBehaviour:
   star3_2d: {fileID: 784747538}
   waitPosition: {fileID: 1479300811}
   leavePosition: {fileID: 980263585}
+  waiting: 0
 --- !u!114 &1399618775
 MonoBehaviour:
   m_ObjectHideFlags: 0
