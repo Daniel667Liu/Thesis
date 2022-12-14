@@ -26,6 +26,10 @@ public class AudienceStateWalking : AudienceStateBase
                         audience.ToWatchState();
                     }
                 }
+                else 
+                {
+                    audience.NormalWalking();
+                }
 
 
 

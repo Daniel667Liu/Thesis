@@ -95,14 +95,14 @@ public class KidAnim : MonoBehaviour
         {
             anim.Play("boy_ride");
             // fly away and another star comes in
-
+            GetComponent<SoundPlay>().PlaySoundData(6);
             StartCoroutine(flyAway());
         }
         if (starNum == 3)
         {
             anim.Play("boy_ride");
             // fly to wait for girl
-            
+            GetComponent<SoundPlay>().PlaySoundData(6);
             StartCoroutine(flyToWait());
         }
     }

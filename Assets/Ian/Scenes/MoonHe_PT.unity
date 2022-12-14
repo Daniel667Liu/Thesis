@@ -2270,6 +2270,7 @@ GameObject:
   - component: {fileID: 194300962}
   - component: {fileID: 194300964}
   - component: {fileID: 194300963}
+  - component: {fileID: 194300965}
   m_Layer: 0
   m_Name: Star3
   m_TagString: Untagged
@@ -2364,6 +2365,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &194300965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194300961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f96aa761d2ff364bb52f9e7c27c1858, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundIndexs: 11000000
+  playModes: 00000000
 --- !u!1 &198124624
 GameObject:
   m_ObjectHideFlags: 0
@@ -15085,6 +15100,7 @@ GameObject:
   - component: {fileID: 1288515061}
   - component: {fileID: 1288515063}
   - component: {fileID: 1288515062}
+  - component: {fileID: 1288515064}
   m_Layer: 0
   m_Name: Star1
   m_TagString: Untagged
@@ -15179,6 +15195,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1288515064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288515060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f96aa761d2ff364bb52f9e7c27c1858, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundIndexs: 11000000
+  playModes: 00000000
 --- !u!1 &1295398391
 GameObject:
   m_ObjectHideFlags: 0
@@ -16636,8 +16666,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f96aa761d2ff364bb52f9e7c27c1858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundIndexs: 010000000d00000010000000
-  playModes: 000000000000000000000000
+  soundIndexs: 010000000d000000100000001400000015000000170000001800000019000000
+  playModes: 0000000000000000000000000000000000000000000000000000000000000000
 --- !u!1 &1441259151
 GameObject:
   m_ObjectHideFlags: 0
@@ -17093,6 +17123,7 @@ GameObject:
   - component: {fileID: 1479190509}
   - component: {fileID: 1479190511}
   - component: {fileID: 1479190510}
+  - component: {fileID: 1479190512}
   m_Layer: 0
   m_Name: Star2
   m_TagString: Untagged
@@ -17187,6 +17218,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1479190512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479190508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f96aa761d2ff364bb52f9e7c27c1858, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundIndexs: 11000000
+  playModes: 00000000
 --- !u!1 &1479300807
 GameObject:
   m_ObjectHideFlags: 0
@@ -19171,7 +19216,7 @@ MonoBehaviour:
     volume: 0.8
     attraction: 0
   - clip: {fileID: 8300000, guid: e4dae060071bb664ab23e916d6a2d532, type: 3}
-    volume: 0.8
+    volume: 1
     attraction: 0
   - clip: {fileID: 8300000, guid: a4d4531c50536984e89a40f327329ad8, type: 3}
     volume: 0.8
@@ -19180,7 +19225,7 @@ MonoBehaviour:
     volume: 0.8
     attraction: 1.5
   - clip: {fileID: 8300000, guid: caabf722d42ba5e488a637e9c5e92471, type: 3}
-    volume: 0.8
+    volume: 0.3
     attraction: 1.5
   - clip: {fileID: 8300000, guid: cc8f6f63ec29aa34cab742f7a131a398, type: 3}
     volume: 0.2
@@ -19210,22 +19255,22 @@ MonoBehaviour:
     volume: 0.8
     attraction: 4
   - clip: {fileID: 8300000, guid: 8e6e1991e6c50b240b6c6fca13fa87aa, type: 3}
-    volume: 0.8
+    volume: 1
     attraction: 5
   - clip: {fileID: 8300000, guid: cf0b24111a858cf41a0712fe2d686f1f, type: 3}
-    volume: 0.8
+    volume: 1
     attraction: 2
   - clip: {fileID: 8300000, guid: bffcd25f6d4eae248b4523adf50f0f8e, type: 3}
     volume: 0.8
     attraction: 2
   - clip: {fileID: 8300000, guid: 4c01113f56283884cad4e33fd45d75bf, type: 3}
-    volume: 0.8
+    volume: 0.3
     attraction: 3
   - clip: {fileID: 8300000, guid: cc86c3e4bbc04174eb0212fb68622baf, type: 3}
     volume: 0.8
     attraction: 1
   - clip: {fileID: 8300000, guid: dfe016f272e260f44956e064acbb87c1, type: 3}
-    volume: 0.8
+    volume: 0.4
     attraction: 2
   - clip: {fileID: 8300000, guid: a8dac7c43f85d2d41b647e2d35624694, type: 3}
     volume: 0.8
@@ -19236,14 +19281,14 @@ MonoBehaviour:
   - clip: {fileID: 8300000, guid: b8af25310c619b244abd45b1582f751a, type: 3}
     volume: 0.8
     attraction: 10
-  - clip: {fileID: 0}
-    volume: 0
+  - clip: {fileID: 8300000, guid: 251ffc89732b4e340a05ff92a840233a, type: 3}
+    volume: 0.8
     attraction: 12
-  - clip: {fileID: 0}
-    volume: 0
+  - clip: {fileID: 8300000, guid: ab9c2546b2d189640b0ffa6a214e18bd, type: 3}
+    volume: 0.8
     attraction: 1
-  - clip: {fileID: 0}
-    volume: 0
+  - clip: {fileID: 8300000, guid: aa3f5f09072b33c43b88162c3ae7766d, type: 3}
+    volume: 0.8
     attraction: 3
   - clip: {fileID: 0}
     volume: 0
