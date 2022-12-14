@@ -5329,16 +5329,16 @@ PrefabInstance:
         type: 3}
       propertyPath: box
       value: 
-      objectReference: {fileID: 1203984114}
+      objectReference: {fileID: 919132149449564079}
     - target: {fileID: 8614251696125467709, guid: 079fe8172c7056d4eb67b64126610006,
         type: 3}
       propertyPath: gapTimeRange.x
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8614251696125467709, guid: 079fe8172c7056d4eb67b64126610006,
         type: 3}
       propertyPath: gapTimeRange.y
-      value: 7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8614251696125467709, guid: 079fe8172c7056d4eb67b64126610006,
         type: 3}

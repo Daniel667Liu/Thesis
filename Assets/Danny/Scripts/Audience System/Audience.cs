@@ -18,6 +18,11 @@ public class Audience : MonoBehaviour
     Vector3 desPos;
     float walkSpeed;
     bool isGivenFeedback = false;
+    [HideInInspector]
+    public bool isWatched = false;
+
+    float delay = 10f;
+    [HideInInspector] public bool startCheck = false;
     AudienceStateBase currentState;
     AudienceStateWalking walkState = new AudienceStateWalking();
     AudienceStateWatching watchState = new AudienceStateWatching();
@@ -37,7 +42,7 @@ public class Audience : MonoBehaviour
         CalDistance();
         iniDistance = (transform.position - box.transform.position).magnitude;
         walkSpeed = Random.Range(10f, 25f);
-
+        delay = Random.Range(1f, 7f);
     }
 
     // Update is called once per frame
@@ -45,7 +50,11 @@ public class Audience : MonoBehaviour
     {
         currentState.UpdateState(this);
         CalDistance();
-        
+        delay -= Time.deltaTime;
+        if (delay < 0) 
+        {
+            startCheck = true;
+        }
     }
 
     public void TransitState(AudienceStateBase next) 
