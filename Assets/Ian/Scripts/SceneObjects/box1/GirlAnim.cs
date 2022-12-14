@@ -18,7 +18,7 @@ public class GirlAnim : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();
-        ka = GameObject.Find("Boy2D").GetComponent<KidAnim>();
+        ka = GameObject.Find("Boy").transform.GetChild(1).GetComponent<KidAnim>();
     }
 
     private void Update()
