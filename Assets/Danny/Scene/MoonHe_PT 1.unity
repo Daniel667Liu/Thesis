@@ -745,6 +745,12 @@ MonoBehaviour:
     mat: {fileID: 2100000, guid: 0835eadd103c3e64089e6c67df725dae, type: 2}
   - key: m
     mat: {fileID: 2100000, guid: d28e1ccbf13f139479215b56cc6a532c, type: 2}
+  Box1Prefab: {fileID: 0}
+  CurrentBox1: {fileID: 0}
+  treeInteraction: {fileID: 0}
+  kidInteraction: {fileID: 0}
+  starInteraction: {fileID: 0}
+  volcanoInteraction: {fileID: 0}
 --- !u!1 &86454029
 GameObject:
   m_ObjectHideFlags: 0
@@ -9481,6 +9487,8 @@ MonoBehaviour:
     type: 3}
   pineappleCloudPrefab: {fileID: 2566372496811011336, guid: 7f6852c08b992d64296d529cc6982dd0,
     type: 3}
+  sparkPrefab: {fileID: 0}
+  ffControl: {fileID: 0}
 --- !u!4 &833961200 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3895785244837755950, guid: c9c02380d3180a541bca1633a5fc7d2f,
@@ -10243,6 +10251,12 @@ MonoBehaviour:
     m_Bits: 128
   panelTransform: {fileID: 0}
   keyMats: []
+  Box1Prefab: {fileID: 0}
+  CurrentBox1: {fileID: 0}
+  treeInteraction: {fileID: 0}
+  kidInteraction: {fileID: 0}
+  starInteraction: {fileID: 0}
+  volcanoInteraction: {fileID: 0}
 --- !u!1 &910362397
 GameObject:
   m_ObjectHideFlags: 0
@@ -11513,6 +11527,101 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &1057251905
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1203984115}
+    m_Modifications:
+    - target: {fileID: 3794046069616111850, guid: 018f12381f28171459f1c25113081fbf,
+        type: 3}
+      propertyPath: m_Name
+      value: FireflyControl
+      objectReference: {fileID: 0}
+    - target: {fileID: 3794046069616111852, guid: 018f12381f28171459f1c25113081fbf,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3794046069616111852, guid: 018f12381f28171459f1c25113081fbf,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3794046069616111852, guid: 018f12381f28171459f1c25113081fbf,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3794046069616111852, guid: 018f12381f28171459f1c25113081fbf,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3794046069616111852, guid: 018f12381f28171459f1c25113081fbf,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3794046069616111852, guid: 018f12381f28171459f1c25113081fbf,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3794046069616111852, guid: 018f12381f28171459f1c25113081fbf,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3794046069616111852, guid: 018f12381f28171459f1c25113081fbf,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3794046069616111852, guid: 018f12381f28171459f1c25113081fbf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3794046069616111852, guid: 018f12381f28171459f1c25113081fbf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3794046069616111852, guid: 018f12381f28171459f1c25113081fbf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 018f12381f28171459f1c25113081fbf, type: 3}
+--- !u!4 &1057251906 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3794046069616111852, guid: 018f12381f28171459f1c25113081fbf,
+    type: 3}
+  m_PrefabInstance: {fileID: 1057251905}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1057251907 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3794046069616111850, guid: 018f12381f28171459f1c25113081fbf,
+    type: 3}
+  m_PrefabInstance: {fileID: 1057251905}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1057251908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057251907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f96aa761d2ff364bb52f9e7c27c1858, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundIndexs: 1b0000001c000000
+  playModes: 0000000000000000
 --- !u!1 &1068220208
 GameObject:
   m_ObjectHideFlags: 0
@@ -14130,6 +14239,7 @@ Transform:
   m_Children:
   - {fileID: 28187768}
   - {fileID: 372423051}
+  - {fileID: 1057251906}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16289,6 +16399,12 @@ MonoBehaviour:
     m_Bits: 128
   panelTransform: {fileID: 0}
   keyMats: []
+  Box1Prefab: {fileID: 0}
+  CurrentBox1: {fileID: 0}
+  treeInteraction: {fileID: 0}
+  kidInteraction: {fileID: 0}
+  starInteraction: {fileID: 0}
+  volcanoInteraction: {fileID: 0}
 --- !u!1 &1378711045
 GameObject:
   m_ObjectHideFlags: 0
@@ -16611,6 +16727,7 @@ MonoBehaviour:
   star3_2d: {fileID: 784747538}
   waitPosition: {fileID: 0}
   leavePosition: {fileID: 0}
+  waiting: 0
 --- !u!114 &1399618775
 MonoBehaviour:
   m_ObjectHideFlags: 0

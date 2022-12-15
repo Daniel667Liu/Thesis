@@ -47,11 +47,14 @@ public class FireflyControl : MonoBehaviour
     public void PlaySpray() 
     {
         spray.Play();
+        
+        
         Invoke("PlayEnds", dropWait);
     }
 
     public void PlayEnds() 
     {
+        GetComponent<SoundPlay>().PlaySoundData(0);
         if (endIndex < flyEnds.Count-1) 
         {
             flyEnds[endIndex].Play();
@@ -70,6 +73,7 @@ public class FireflyControl : MonoBehaviour
         foreach (VisualEffect ve in flyEnds) 
         {
             ve.SetBool("IfMove", true);
+            GetComponent<SoundPlay>().PlaySoundData(1);
         }
     }
 

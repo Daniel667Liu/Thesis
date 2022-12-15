@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1378400012635929556}
   - component: {fileID: 1378400012635929563}
   - component: {fileID: 5222469950111144853}
+  - component: {fileID: 5406760048467633668}
   m_Layer: 0
   m_Name: Lolipop_withoutkid
   m_TagString: Untagged
@@ -118,3 +119,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde9ae1a0ee26194caeeb0f77cc18347, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5406760048467633668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378400012635929561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f96aa761d2ff364bb52f9e7c27c1858, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundIndexs: 0700000008000000
+  playModes: 0000000000000000

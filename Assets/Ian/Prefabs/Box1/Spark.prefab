@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 471512524383231332}
   - component: {fileID: 6777877652538237653}
   - component: {fileID: 3704649781258517371}
+  - component: {fileID: 302313119959021367}
   m_Layer: 0
   m_Name: Spark
   m_TagString: Untagged
@@ -118,3 +119,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde9ae1a0ee26194caeeb0f77cc18347, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &302313119959021367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7634410096834502590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f96aa761d2ff364bb52f9e7c27c1858, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundIndexs: 16000000
+  playModes: 00000000
