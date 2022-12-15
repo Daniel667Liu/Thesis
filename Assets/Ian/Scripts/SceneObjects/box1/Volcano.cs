@@ -14,6 +14,9 @@ public class Volcano : SceneObject
     public List<string> currentAmmos;
     public GameObject fireworkPrefab;
     public GameObject pineappleCloudPrefab;
+    public GameObject sparkPrefab;
+
+    public FireflyControl ffControl;
 
 
     private Animator anim;
@@ -72,6 +75,8 @@ public class Volcano : SceneObject
             else if (currentAmmo.Equals("star"))
             {
                 // star thing
+                Instantiate(sparkPrefab, transform.parent.parent, true);
+                ffControl.PlaySpray();
             }
 
             currentAmmos.RemoveAt(0);
