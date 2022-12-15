@@ -19,14 +19,14 @@ public class KidAnim : MonoBehaviour
 
     private bool attracted;
 
+    private bool onAir;
+
     public bool waiting;
 
     private void Start()
     {
         sitAnchor = transform.GetChild(0).gameObject;
         anim = GetComponent<Animator>();
-
-
     }
 
     private void Update()
@@ -78,8 +78,20 @@ public class KidAnim : MonoBehaviour
 
     public void StartMoving()
     {
-        GameObject.Find("Tree").GetComponent<AppleTree>().childLeft = true;
-        transform.parent.GetComponent<Kid>().GetComponent<Animator>().SetTrigger("float");
+        if (!onAir)
+        {
+            GameObject.Find("Tree").GetComponent<AppleTree>().childLeft = true;
+            transform.parent.GetComponent<Kid>().GetComponent<Animator>().enabled = true;
+            transform.parent.GetComponent<Kid>().GetComponent<Animator>().SetTrigger("float");
+            onAir = true;
+        }
+        
+    }
+
+    public void BackOnGround()
+    {
+        onAir = false;
+        GameObject.Find("Tree").GetComponent<AppleTree>().childLeft = false;
     }
 
     public void Reset()
@@ -182,6 +194,11 @@ public class KidAnim : MonoBehaviour
     {
         anim.enabled = true;
         anim.SetTrigger("leave");
+    }
+
+    public void SitBackDown()
+    {
+        anim.Play("boy_end_float");
     }
 
     private float quadEaseIn(float t) => t * t;

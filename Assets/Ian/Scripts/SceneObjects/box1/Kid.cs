@@ -165,4 +165,9 @@ public class Kid : SceneObject
         cdTimer = 0f;
         cd = true;
     }
+
+    public void FallToGround()
+    {
+        TwoDParent.GetComponent<KidAnim>().SitBackDown();
+    }
 }
