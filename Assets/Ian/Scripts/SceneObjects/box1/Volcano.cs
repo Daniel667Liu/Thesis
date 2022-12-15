@@ -60,14 +60,14 @@ public class Volcano : SceneObject
         if (currentAmmos.Count == 0)
         {
             // shoot firework
-            currentFirework = Instantiate(fireworkPrefab);
+            currentFirework = Instantiate(fireworkPrefab, transform.parent.parent, true);
         }
         else
         {
             string currentAmmo = currentAmmos[0];
             if (currentAmmo.Equals("pineapple"))
             {
-                Instantiate(pineappleCloudPrefab);
+                Instantiate(pineappleCloudPrefab, transform.parent.parent, true);
             }
             else if (currentAmmo.Equals("star"))
             {

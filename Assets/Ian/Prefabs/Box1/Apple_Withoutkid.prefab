@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7956461963183032770}
   - component: {fileID: 7956461963183032768}
   - component: {fileID: 7956461963183032771}
+  - component: {fileID: 7541108267316337722}
   m_Layer: 0
   m_Name: Apple_Withoutkid
   m_TagString: Untagged
@@ -105,3 +106,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7541108267316337722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7956461963183032781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fde9ae1a0ee26194caeeb0f77cc18347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

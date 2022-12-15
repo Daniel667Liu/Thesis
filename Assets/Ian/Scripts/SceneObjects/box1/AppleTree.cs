@@ -75,7 +75,7 @@ public class AppleTree : SceneObject
     {
         //TODO
         Debug.Log("SHAKE");
-        speed += 0.35f;
+        speed += 0.45f;
         if (speed >= 1f) speed = 1f;
 
         resetCD();
@@ -123,20 +123,20 @@ public class AppleTree : SceneObject
         {
             if (currentObjectIndex == 0)
             {
-                Instantiate(appleWithoutChild);
+                Instantiate(appleWithoutChild, transform.parent, true);
             }
             else if (currentObjectIndex == 2)
             {
-                Instantiate(lolipopWithoutChild);
+                Instantiate(lolipopWithoutChild, transform.parent, true);
             }
             else
             {
-                Instantiate(FallObjects[currentObjectIndex]);
+                Instantiate(FallObjects[currentObjectIndex], transform.parent, true);
             }
         }
         else
         {
-            Instantiate(FallObjects[currentObjectIndex]);
+            Instantiate(FallObjects[currentObjectIndex], transform.parent, true);
         }
         currentObjectIndex = (currentObjectIndex + 1) % FallObjects.Length;
     }

@@ -67,4 +67,14 @@ public class AudienceSpawner : MonoBehaviour
     {
         StopAllCoroutines();
     }
+
+    public void UpdateBox(GameObject _box)
+    {
+        box = _box;
+        foreach (Audience a in Services.audienceManager.audiences)
+        {
+            if (a != null)
+                a.box = _box;
+        }
+    }
 }

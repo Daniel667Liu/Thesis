@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1235119562310428466}
   - component: {fileID: 1235119562310428467}
   - component: {fileID: 3401562572978890795}
+  - component: {fileID: 2970876261318431552}
   m_Layer: 0
   m_Name: AppleV2
   m_TagString: Untagged
@@ -120,3 +121,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundIndexs: 0400000005000000
   playModes: 0000000000000000
+--- !u!114 &2970876261318431552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235119562310428469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fde9ae1a0ee26194caeeb0f77cc18347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

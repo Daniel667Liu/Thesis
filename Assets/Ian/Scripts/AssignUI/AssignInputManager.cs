@@ -10,6 +10,15 @@ public class AssignInputManager : MonoBehaviour
 
     public List<KeyMaterial> keyMats = new List<KeyMaterial>();
 
+    public GameObject Box1Prefab;
+    public GameObject CurrentBox1;
+
+    [Header("Button References")]
+    public TreeInteraction treeInteraction;
+    public KidInteraction kidInteraction;
+    public StarInteraction starInteraction;
+    public FireflyInteraction volcanoInteraction;
+
     // current hoverbox
     private GameObject hoverObject;
 
@@ -31,6 +40,18 @@ public class AssignInputManager : MonoBehaviour
     void Update()
     {
         //if (transform.parent.gameObject.GetComponent<Manual>().shown == false) return;
+
+        if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.R))
+        {
+            GameObject newBox = Instantiate(Box1Prefab);
+            GameObject.Find("AudienceSystem").transform.GetChild(1).GetComponent<AudienceSpawner>().UpdateBox(newBox);
+            Destroy(CurrentBox1);
+            CurrentBox1 = newBox;
+            treeInteraction.tree = CurrentBox1.transform.GetChild(0).GetChild(1).GetComponent<AppleTree>();
+            kidInteraction.kid = CurrentBox1.transform.GetChild(0).GetChild(2).GetComponent<Kid>();
+            starInteraction.starParent = CurrentBox1.transform.GetChild(0).GetChild(3).GetComponent<StarParent>();
+            volcanoInteraction.volcano = CurrentBox1.transform.GetChild(0).GetChild(4).GetComponent<Volcano>();
+        }
 
         GameObject oldHover = hoverObject;
         hoverObject = raycast(inputBoxLayer);
